@@ -35,8 +35,16 @@
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $produto->marca }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $produto->valorCusto }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $produto->valorVenda }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $produto->quantidade }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $produto->status }}</td>
+                                        @if ( $produto->quantidade === "0")
+                                            <td class="px-6 py-4 whitespace-nowrap text-red-600">{{ $produto->quantidade }}</td>
+                                        @else
+                                            <td class="px-6 py-4 whitespace-nowrap">{{ $produto->quantidade }}</td>
+                                        @endif
+                                        @if ( $produto->status === "Disponível")
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-600">{{ $produto->status }}</td>
+                                        @else
+                                        <td class="px-6 py-4 whitespace-nowrap text-red-600">{{ $produto->status }}</td>
+                                        @endif
                                         <!-- Adicione mais colunas para outros campos aqui -->
                                     </tr>
                                 @endforeach
