@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <!-- Login -->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<style>
+    .logo-color{
+        color: darkslateblue;
+    }
 
+    .logo-font{
+        font-weight: 900;
+        font-size:larger;
+    }
+</style>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,11 +30,11 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <div>
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <x-fileicon-saltstack class="w-20 h-20 fill-current" color="darkred"/>
             </a>
-            <p align="center" class="font-semibold text-xl text-gray-800 leading-tight">LAUR</p>
+            <p align="center" class="mt-6 text-x1 leading-tight logo-font">LAUR</p>
         </div>
-        <p align="center">Controle de estoque e vendas</p>
+        <p align="center" class="text-gray-400">Controle de estoque e vendas</p>
 
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             {{ $slot }}
