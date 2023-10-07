@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Cadastro') }}
+            {{ __('Cadastro de Produtos') }}
         </h2>
     </x-slot>    
     @if ($errors->any())
@@ -22,62 +22,47 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h2 class="font-semibold text-xl mb-4">{{ __('Cadastro de Produtos') }}</h2>
-
                     <form method="POST" action="{{ route('produto.store') }}">
                         @csrf
-
+                        <table width="90%" align="center">
+                            <tr>
+                                <th align="left" colspan="2">Produto</th>
+                                <th align="left">Código</th>
+                            </tr>
+                            <tr>
+                                <th colspan="2" ><input type="text" name="produto" id="produto" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th><input type="text" name="codigo" id="codigo" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                            </tr>
+                            <tr>
+                                <th align="left">Tipo</th>
+                                <th align="left">Marca</th>
+                                <th align="left">Unidade</th>
+                            </tr>
+                            <tr>
+                                <th><input type="text" name="tipo" id="tipo" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th><input type="text" name="marca" id="marca" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th><input type="text" name="unidade" id="unidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                            </tr>
+                            <tr>
+                                <th align="left">Preço de Custo</th>
+                                <th align="left">Valor de Venda</th>
+                                <th align="left">Quantidade</th>
+                            </tr>
+                            <tr>
+                                <th><input type="text" name="valorCusto" id="valorCusto" placeholder="0,00" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th><input type="text" name="valorVenda" id="valorVenda" placeholder="0,00" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th><input type="number" name="quantidade" id="quantidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                            </tr>
+                            <tr>
+                                <th align="left">Status</th>
+                            </tr>
+                            <tr>
+                                <th><input type="text" name="status" id="status" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                            </tr>
+                        </table>
+                        <br>
                         <div class="mb-4">
-                            <label for="produto">Produto:</label>
-                            <input type="text" name="produto" id="produto" class="form-input" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="codigo">Código:</label>
-                            <input type="text" name="codigo" id="codigo" class="form-input" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="tipo">Tipo:</label>
-                            <input type="text" name="tipo" id="tipo" class="form-input" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="marca">Marca:</label>
-                            <input type="text" name="marca" id="marca" class="form-input" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="unidade">Unidade:</label>
-                            <input type="text" name="unidade" id="unidade" class="form-input" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <!-- TODO: campo tipo float -->
-                            <label for="valorCusto">Valor de Custo:</label>
-                            <input type="text" name="valorCusto" id="valorCusto" class="form-input" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <!-- TODO: campo tipo float -->
-                            <label for="valorVenda">Valor de Venda:</label>
-                            <input type="text" name="valorVenda" id="valorVenda" class="form-input" required>
-                        </div>
-
-                        <!-- TODO: campo tipo int -->
-                        <div class="mb-4">
-                            <label for="quantidade">Quantidade:</label>
-                            <input type="number" name="quantidade" id="quantidade" class="form-input" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <!-- TODO: campo tipo radio -->
-                            <label for="status">Status:</label>
-                            <input type="text" name="status" id="status" class="form-input" required>
-                        </div>
-
-                        <div class="mb-4">
-                        <x-primary-button type="submit" class="btn btn-primary">Salvar</x-primary-button>
+                            <x-primary-button type="submit" class="btn btn-primary">Salvar</x-primary-button>
                         </div>
                     </form>
                 </div>
