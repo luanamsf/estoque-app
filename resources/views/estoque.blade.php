@@ -45,7 +45,6 @@
                                         @else
                                             <td class="px-6 py-4 whitespace-nowrap text-red-600">{{ $produto->status }}</td>
                                         @endif
-                                        <!-- Adicione mais colunas para outros campos aqui -->
                                     </tr>
                                 @endforeach
                             </tbody>

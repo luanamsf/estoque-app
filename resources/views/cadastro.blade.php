@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <button type="submit" class="btn btn-primary">Salvar</button>
+                        <x-primary-button type="submit" class="btn btn-primary">Salvar</x-primary-button>
                         </div>
                     </form>
                 </div>

@@ -22,4 +22,11 @@ class ClienteController extends Controller
 
         return redirect()->route('clientes')->with('success', 'Cliente cadastrado(a) com sucesso.');
     }
+
+    public function listaCliente()
+    {
+        $clientes = Cliente::all();
+
+        return view('clientes', compact('clientes'));
+    }
 }

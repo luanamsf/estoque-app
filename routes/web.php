@@ -46,7 +46,7 @@ Route::get('/vendas', function () {
 })->middleware(['auth', 'verified'])->name('vendas');
 
 // Rota para a página de clientes
-Route::get('/clientes', function () {
+Route::get('/clientes', [ClienteController::class, 'listaCliente'], function () {
     return view('clientes');
 })->middleware(['auth', 'verified'])->name('clientes');
 
