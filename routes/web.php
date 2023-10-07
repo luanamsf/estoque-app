@@ -53,6 +53,10 @@ Route::get('/clientes', [ClienteController::class, 'listaCliente'], function () 
 // Rota para salvar o cliente
 Route::post('/clientes', [ClienteController::class, 'clients'])->name('cliente.clients');
 
+Route::get('/contasReceber', function () {
+    return view('contasReceber');
+})->middleware(['auth', 'verified'])->name('contasReceber');
+
 Route::get('/relatorios', function () {
     return view('relatorios');
 })->middleware(['auth', 'verified'])->name('relatorios');
