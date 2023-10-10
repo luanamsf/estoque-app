@@ -4,6 +4,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\VendaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +42,16 @@ Route::get('/cadastro', function () {
 // Rota para salvar o produto
 Route::post('/cadastro', [ProdutoController::class, 'store'])->name('produto.store');
 
-Route::get('/vendas', function () {
+
+Route::get('/vendas', [VendaController::class, 'clientList'], function () {
     return view('vendas');
 })->middleware(['auth', 'verified'])->name('vendas');
+
+// Rota para salvar a venda
+Route::post('/vendas', [VendaController::class, 'sale'])->name('venda.sale');
+
+// Rota para salvar a venda
+//Route::post('/vendas', [VendaController::class, 'clientesId'])->name('venda.clientesId');
 
 // Rota para a página de clientes
 Route::get('/clientes', [ClienteController::class, 'listaCliente'], function () {

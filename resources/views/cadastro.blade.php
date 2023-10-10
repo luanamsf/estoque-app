@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Cadastro de Produtos') }}
         </h2>
-    </x-slot>    
+    </x-slot>
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -30,7 +30,7 @@
                                 <th align="left">Código</th>
                             </tr>
                             <tr>
-                                <th colspan="2" ><input type="text" name="produto" id="produto" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th colspan="2"><input type="text" name="produto" id="produto" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
                                 <th><input type="text" name="codigo" id="codigo" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
                             </tr>
                             <tr>
@@ -54,10 +54,15 @@
                                 <th><input type="number" name="quantidade" id="quantidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
                             </tr>
                             <tr>
-                                <th align="left">Status</th>
+                                <th align="left">Disponível</th>
                             </tr>
                             <tr>
-                                <th><input type="text" name="status" id="status" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th>
+                                    <select name="status" id="status" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
+                                        <option value="1">Sim</option>
+                                        <option value="0">Não</option>
+                                    </select>
+                                </th>
                             </tr>
                         </table>
                         <br>

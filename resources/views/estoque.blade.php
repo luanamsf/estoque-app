@@ -40,10 +40,10 @@
                                         @else
                                             <td class="px-6 py-4 whitespace-nowrap">{{ $produto->quantidade }}</td>
                                         @endif
-                                        @if ( $produto->status === "Disponível")
-                                            <td class="px-6 py-4 whitespace-nowrap text-green-600">{{ $produto->status }}</td>
+                                        @if ( $produto->status === "1")
+                                            <td class="px-6 py-4 whitespace-nowrap text-green-600">Disponível</td>
                                         @else
-                                            <td class="px-6 py-4 whitespace-nowrap text-red-600">{{ $produto->status }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-red-600">Indisponível</td>
                                         @endif
                                     </tr>
                                 @endforeach

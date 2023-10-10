@@ -83,6 +83,9 @@
                                 </tr>
                             </table>
                         </form>
+                        <div class="mb-4">
+                            <x-primary-button type="submit" class="btn btn-primary">Salvar</x-primary-button>
+                        </div>
                     </div>
                 </div>
             </div>
