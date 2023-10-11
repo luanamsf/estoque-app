@@ -11,7 +11,7 @@ class Venda extends Model
     protected $fillable = [
         'cliente_id',
         'user_id',
-        'codigo_venda',
+        'data_venda',
         'valorTotal',
         'modoPagamento',
     ];

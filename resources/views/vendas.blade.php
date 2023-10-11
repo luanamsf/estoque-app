@@ -43,7 +43,6 @@
                                 <th align="left">Cliente</th>
                                 <!-- <th width="10%"></th> -->
                                 <th align="left">Vendedor</th>
-                                <th align="left">Data da Venda</th>
                             </tr>
                             <tr>
                                 <th>
@@ -61,15 +60,31 @@
                                         <option value="{{ Auth::user()->id }}">{{ Auth::user()->name }}</option>
                                     </select>
                                 </th>
-                                <th><input type="date" name="data_venda" id="data_venda" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ date('Y-m-d') }}" readonly></th>
                             </tr>
+                            <tr>
+                            <th align="left">Forma de Pagamento</th>
+                            <th align="left" width="40%">Data da Venda</th>
+                            </tr>
+                            <tr>
+                                <th>
+                                <select name="modoPagamento" id="modoPagamento" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
+                                        <option value="1">Crédito A vista</option>
+                                        <option value="0">Crédito Parcelado</option>
+                                        <option value="0">Débito</option>
+                                        <option value="0">Dinheiro A vista</option>
+                                        <option value="0">Dinheiro Parcelado</option>
+                                    </select>
+                                </th>
+                                <th width="40%"><input type="date" name="data_venda" id="data_venda" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ date('Y-m-d') }}" readonly></th>
+                            </tr>
+
 
                         </table>
                         <br>
                         <table width="95%" align="center" id="produtosTable">
                             <tr>
                                 <th>Produtos</th>
-                                <th>Quantidades</th>    
+                                <th>Quantidades</th>
                             </tr>
                         </table>
                         <br>

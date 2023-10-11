@@ -16,7 +16,7 @@ class VendaController extends Controller
         $data = $request->validate([
             'cliente_id'    => 'required|integer',
             'user_id'       => 'required|integer',
-            'codigo_venda'  => 'required|string|max:255',
+            'data_venda'    => 'string|max:255',
             'valorTotal'    => 'required|string|max:255',
             'modoPagamento' => 'required|string|max:255',
         ]);

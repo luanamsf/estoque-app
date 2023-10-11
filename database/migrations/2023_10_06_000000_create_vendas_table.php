@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('cliente_id');
             $table->string('user_id');
-            $table->string('codigo_venda');
+            $table->string('data_venda');
             $table->string('valorTotal');
             $table->string('modoPagamento');
             $table->timestamp('created_at')->nullable();
