@@ -43,15 +43,12 @@ Route::get('/cadastro', function () {
 Route::post('/cadastro', [ProdutoController::class, 'store'])->name('produto.store');
 
 
-Route::get('/vendas', [VendaController::class, 'clientList'], function () {
+Route::get('/vendas', [VendaController::class, 'clientProductList'], function () {
     return view('vendas');
 })->middleware(['auth', 'verified'])->name('vendas');
 
 // Rota para salvar a venda
 Route::post('/vendas', [VendaController::class, 'sale'])->name('venda.sale');
-
-// Rota para salvar a venda
-//Route::post('/vendas', [VendaController::class, 'clientesId'])->name('venda.clientesId');
 
 // Rota para a página de clientes
 Route::get('/clientes', [ClienteController::class, 'listaCliente'], function () {

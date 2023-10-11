@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Venda;
 use App\Models\Cliente;
-
+use App\Models\Produto;
 
 class VendaController extends Controller
 {
@@ -16,12 +16,10 @@ class VendaController extends Controller
         $data = $request->validate([
             'cliente_id'    => 'required|integer',
             'user_id'       => 'required|integer',
+            'codigo_venda'  => 'required|string|max:255',
             'valorTotal'    => 'required|string|max:255',
             'modoPagamento' => 'required|string|max:255',
         ]);
-
-        // Buscar todos os clientes
-        // $clientesId = Cliente::all();
 
         // Criar venda
         Venda::create($data);
@@ -29,13 +27,18 @@ class VendaController extends Controller
         return redirect()->route('vendas')->with('success', 'Venda registrada com sucesso.');
     }
 
-        // listar clientes
-        public function clientList()
-        {
-            $clientesId = Cliente::all();
-    
-            return view('vendas', ['clientesId' => $clientesId]);
-        }
+    // listar clientes
+    public function clientProductList(Request $request)
+    {
+        $clientesId = Cliente::all();
+
+        $produtosId = Produto::all();
+
+        $produtos = $request->input('produtos');
+        $quantidades = $request->input('quantidades');
+
+        return view('vendas', ['clientesId' => $clientesId], ['produtosId' => $produtosId], ['produtos' => $produtos], ['quantidades' => $quantidades]);
+    }
 
 
     // lista as vendas
@@ -45,5 +48,4 @@ class VendaController extends Controller
 
         return view('vendas', compact('vendas'));
     }
-
 }
