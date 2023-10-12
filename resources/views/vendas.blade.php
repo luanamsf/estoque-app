@@ -12,18 +12,39 @@
             var cell1 = newRow.insertCell(0);
             var cell2 = newRow.insertCell(1);
             var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
 
             cell1.innerHTML = `
-            <select name="produtos[]" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
+            <select name="produtosId" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required onchange="atualizarValorVenda(this)" onchange="calcularValorTotalItem(this, this.parentNode.nextElementSibling.firstChild, this.parentNode.nextElementSibling.nextElementSibling.firstChild)">
                 <option value="">Selecione um produto</option>
                 @foreach($produtosId as $produto)
-                <option value="{{ $produto->id }}">{{ $produto->produto }}</option>
+                <option value="{{ $produto->id }}" data-valor="{{ $produto->valorVenda }}">{{ $produto->produto }}</option>
                 @endforeach
             </select>
         `;
 
-            cell2.innerHTML = `<input type="number" name="quantidades[]" width="90%" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>`;
-            cell3.innerHTML = `<button type="button" border=0 onclick="removerProduto(this)"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16" color="darkred">@svg('fluentui-subtract-16')</svg></button>`;
+            cell2.innerHTML = `<input type="text" name="valorVenda" id="valorVenda" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" readonly>`;
+            cell3.innerHTML = `<input type="number" name="quantidade" width="90%" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>`;
+            cell4.innerHTML = `<input type="text" name="valorTotalItem" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" readonly>`;
+            cell5.innerHTML = `<button type="button" border=0 onclick="removerProduto(this)"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16" color="darkred">@svg('fluentui-subtract-16')</svg></button>`;
+        }
+
+        function atualizarValorVenda(select) {
+            var selectedOption = select.options[select.selectedIndex];
+            var valorVenda = selectedOption.getAttribute('data-valor');
+
+            document.getElementById('valorVenda').value = valorVenda;
+        }
+
+        function calcularValorTotalItem
+        (selectElement, quantidadeElement, valorTotalItemElement) {
+            var selectedOption = selectElement.options[selectElement.selectedIndex];
+            var valorVenda = selectedOption.getAttribute('data-valor');
+            var quantidade = parseFloat(quantidadeElement.value);
+
+            var total = valorVenda * quantidade;
+            valorTotalItemElement.value = total.toFixed(2); // Formate para duas casas decimais
         }
 
         function removerProduto(button) {
@@ -62,17 +83,18 @@
                                 </th>
                             </tr>
                             <tr>
-                            <th align="left">Forma de Pagamento</th>
-                            <th align="left" width="40%">Data da Venda</th>
+                                <th align="left">Forma de Pagamento</th>
+                                <th align="left" width="40%">Data da Venda</th>
                             </tr>
                             <tr>
                                 <th>
-                                <select name="modoPagamento" id="modoPagamento" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
-                                        <option value="1">Crédito A vista</option>
-                                        <option value="0">Crédito Parcelado</option>
-                                        <option value="0">Débito</option>
-                                        <option value="0">Dinheiro A vista</option>
-                                        <option value="0">Dinheiro Parcelado</option>
+                                    <select name="modoPagamento" id="modoPagamento" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
+                                        <option value="">Selecione uma opção</option>
+                                        <option value="cred vista">Crédito a vista</option>
+                                        <option value="cred parc">Crédito Parcelado</option>
+                                        <option value="deb">Débito</option>
+                                        <option value="din vista">Dinheiro A vista</option>
+                                        <option value="din parc">Dinheiro Parcelado</option>
                                     </select>
                                 </th>
                                 <th width="40%"><input type="date" name="data_venda" id="data_venda" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ date('Y-m-d') }}" readonly></th>
@@ -83,8 +105,10 @@
                         <br>
                         <table width="95%" align="center" id="produtosTable">
                             <tr>
-                                <th>Produtos</th>
-                                <th>Quantidades</th>
+                                <th>Produto</th>
+                                <th>Vl. Produto</th>
+                                <th>Quantidade</th>
+                                <th>Vl. Calc</th>
                             </tr>
                         </table>
                         <br>

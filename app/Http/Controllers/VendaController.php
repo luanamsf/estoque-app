@@ -14,11 +14,11 @@ class VendaController extends Controller
     public function sale(Request $request)
     {
         $data = $request->validate([
-            'cliente_id'    => 'required|integer',
-            'user_id'       => 'required|integer',
-            'data_venda'    => 'string|max:255',
-            'valorTotal'    => 'required|string|max:255',
-            'modoPagamento' => 'required|string|max:255',
+            'cliente_id'         => 'required|integer',
+            'user_id'            => 'required|integer',
+            'dataVenda'          => 'string|max:255',
+            'valorTotalVenda'    => 'required|string|max:255',
+            'modoPagamento'      => 'required|string|max:255',
         ]);
 
         // Criar venda
@@ -34,10 +34,7 @@ class VendaController extends Controller
 
         $produtosId = Produto::all();
 
-        $produtos = $request->input('produtos');
-        $quantidades = $request->input('quantidades');
-
-        return view('vendas', ['clientesId' => $clientesId], ['produtosId' => $produtosId], ['produtos' => $produtos], ['quantidades' => $quantidades]);
+        return view('vendas', ['clientesId' => $clientesId], ['produtosId' => $produtosId]);
     }
 
 
