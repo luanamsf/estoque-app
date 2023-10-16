@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutoController;
@@ -57,6 +58,15 @@ Route::get('/clientes', [ClienteController::class, 'listaCliente'], function () 
 
 // Rota para salvar o cliente
 Route::post('/clientes', [ClienteController::class, 'clients'])->name('cliente.clients');
+
+
+// Rota para a página de fornecedores
+Route::get('/fornecedores', [FornecedorController::class, 'listaFornecedor'], function () {
+    return view('fornecedores');
+})->middleware(['auth', 'verified'])->name('fornecedores');
+
+// Rota para salvar o fornecedor
+Route::post('/fornecedores', [FornecedorController::class, 'criaFornecedor'])->name('fornecedor.criaFornecedor');
 
 Route::get('/contasReceber', function () {
     return view('contasReceber');

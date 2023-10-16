@@ -37,8 +37,7 @@
             document.getElementById('valorVenda').value = valorVenda;
         }
 
-        function calcularValorTotalItem
-        (selectElement, quantidadeElement, valorTotalItemElement) {
+        function calcularValorTotalItem(selectElement, quantidadeElement, valorTotalItemElement) {
             var selectedOption = selectElement.options[selectElement.selectedIndex];
             var valorVenda = selectedOption.getAttribute('data-valor');
             var quantidade = parseFloat(quantidadeElement.value);

@@ -39,7 +39,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Clientes') }}
+            {{ __('Fornecedores') }}
         </h2>
     </x-slot>
     @if ($errors->any())
@@ -60,7 +60,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h2 class="font-semibold text-xl mb-4">{{ __('Cadastro de Clientes') }}</h2>
+                    <h2 class="font-semibold text-xl mb-4">{{ __('Cadastro de Fornecedores') }}</h2>
                     <button onclick="toggleCollapsible()" class="bg-blue-500 hover:bg-blue-700 text-gray font-bold py-4 px-4 rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
                             <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
@@ -68,23 +68,25 @@
                         </svg>
                     </button>
                     <div id="collapsible-section" class="collapsible-content">
-                        <form method="POST" action="{{ route('cliente.clients') }}">
+                        <form method="POST" action="{{ route('fornecedor.criaFornecedor') }}">
                             @csrf
                             <table width="90%" align="center">
                                 <tr>
-                                    <th colspan="4" align="left">Nome</th>
-                                    <th align="left">CPF</th>
+                                    <th align="left">Nome Fantasia</th>
+                                    <th colspan="2" align="left">Razão Social</th>
                                 </tr>
                                 <tr>
-                                    <th colspan="4"><input type="text" name="nome" id="nome" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" required></th>
-                                    <th><input type="text" name="cpf" id="cpf" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" placeholder="000.000.000-00" oninput="this.value = formatCnpjCpf(this.value)" autofocus="autofocus"></th>
+                                    <th><input type="text" name="nomeFantasia" id="nomeFantasia" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" required></th>
+                                    <th colspan="2"><input type="text" name="razaoSocial" id="razaoSocial" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" required></th>
                                 </tr>
                                 <tr>
+                                    <th align="left">CNPJ</th>
                                     <th align="left">Telefone</th>
-                                    <th align="left">Aniversário</th>
+                                    <th align="left">E-mail</th>
                                 </tr>
+                                <th><input type="text" name="cnpj" id="cnpj" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" oninput="this.value = formatCnpjCpf(this.value)" required></th>
                                 <th><input type="text" name="telefone" id="telefone" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" placeholder="61 99999-9999" autofocus="autofocus" required></th>
-                                <th><input type="date" name="aniversario" id="aniversario" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" required></th>
+                                <th><input type="text" name="email" id="email" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" required></th>
                                 </tr>
                                 <tr>
                                     <th colspan="6" align="left">Observação</th>
@@ -106,33 +108,35 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h2 class="font-semibold text-xl mb-4">Carteira de Clientes</h2>
-                    @if ($clientes->count() > 0)
+                    <h2 class="font-semibold text-xl mb-4">Fornecedores</h2>
+                    @if ($fornecedores->count() > 0)
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CPF</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome Fantasia</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Razão Social</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CNPJ</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefone</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aniversário</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">E-mail</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Observação</th>
                                 <!-- Adicione mais colunas para outros campos aqui -->
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($clientes as $cliente)
+                            @foreach ($fornecedores as $fornecedor)
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->nome }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->cpf }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->telefone }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->aniversario }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->observacao }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->nomeFantasia }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->razaoSocial }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->cnpj }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->telefone }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->email }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->observacao }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     @else
-                    <p>Nenhum(a) cliente cadastrado(a).</p>
+                    <p>Nenhum fornecedor cadastrado.</p>
                     @endif
                 </div>
             </div>
