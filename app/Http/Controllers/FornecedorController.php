@@ -13,8 +13,8 @@ class FornecedorController extends Controller
             'nomeFantasia'  => 'required|string|max:255',
             'razaoSocial'   => 'required|string|max:255',
             'cnpj'          => 'nullable|string|max:255',
-            'telefone'      => 'required|string|max:255',
-            'email'         => 'required|string|max:255',
+            'telefone'      => 'nullable|string|max:255',
+            'email'         => 'nullable|string|max:255',
             'observacao'    => 'nullable|string|max:255',
         ]);
 

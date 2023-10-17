@@ -76,17 +76,17 @@
                                     <th colspan="2" align="left">Razão Social</th>
                                 </tr>
                                 <tr>
-                                    <th><input type="text" name="nomeFantasia" id="nomeFantasia" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" required></th>
-                                    <th colspan="2"><input type="text" name="razaoSocial" id="razaoSocial" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" required></th>
+                                    <th ><input type="text" name="nomeFantasia" id="nomeFantasia" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" required></th>
+                                    <th colspan="2" ><input type="text" name="razaoSocial" id="razaoSocial" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" ></th>
                                 </tr>
                                 <tr>
                                     <th align="left">CNPJ</th>
                                     <th align="left">Telefone</th>
                                     <th align="left">E-mail</th>
                                 </tr>
-                                <th><input type="text" name="cnpj" id="cnpj" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" oninput="this.value = formatCnpjCpf(this.value)" required></th>
-                                <th><input type="text" name="telefone" id="telefone" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" placeholder="61 99999-9999" autofocus="autofocus" required></th>
-                                <th><input type="text" name="email" id="email" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" required></th>
+                                <th><input type="text" name="cnpj" id="cnpj" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" placeholder="00.000.000/0000-00" oninput="this.value = formatCnpjCpf(this.value)"  autofocus="autofocus"></th>
+                                <th><input type="text" name="telefone" id="telefone" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" placeholder="61 99999-9999" autofocus="autofocus" ></th>
+                                <th><input type="text" name="email" id="email" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" ></th>
                                 </tr>
                                 <tr>
                                     <th colspan="6" align="left">Observação</th>
@@ -95,10 +95,11 @@
                                     <th colspan="6"><input type="text" name="observacao" id="observacao" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus"></th>
                                 </tr>
                             </table>
-                        </form>
-                        <div class="mb-4">
+                            <br>
+                            <div class="mb-4">
                             <x-primary-button type="submit" class="btn btn-primary">Salvar</x-primary-button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

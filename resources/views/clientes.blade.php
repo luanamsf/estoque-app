@@ -23,17 +23,6 @@
             collapsible.style.display = 'none';
         }
     }
-
-    function formatCnpjCpf(value) {
-        const CPF_LENGTH = 11;
-        const cnpjCpf = value.replace(/\D/g, '');
-
-        if (cnpjCpf.length === CPF_LENGTH) {
-            return cnpjCpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "\$1.\$2.\$3-\$4");
-        }
-
-        return cnpjCpf.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g, "\$1.\$2.\$3/\$4-\$5");
-    }
 </script>
 
 <x-app-layout>
@@ -83,8 +72,8 @@
                                     <th align="left">Telefone</th>
                                     <th align="left">Aniversário</th>
                                 </tr>
-                                <th><input type="text" name="telefone" id="telefone" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" placeholder="61 99999-9999" autofocus="autofocus" required></th>
-                                <th><input type="date" name="aniversario" id="aniversario" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" required></th>
+                                <th><input type="text" name="telefone" id="telefone" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" placeholder="61 99999-9999" autofocus="autofocus" ></th>
+                                <th><input type="date" name="aniversario" id="aniversario" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" ></th>
                                 </tr>
                                 <tr>
                                     <th colspan="6" align="left">Observação</th>
@@ -93,10 +82,11 @@
                                     <th colspan="6"><input type="text" name="observacao" id="observacao" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus"></th>
                                 </tr>
                             </table>
+                            <br>
+                            <div class="mb-4">
+                                <x-primary-button type="submit" class="btn btn-primary">Salvar</x-primary-button>
+                            </div>
                         </form>
-                        <div class="mb-4">
-                            <x-primary-button type="submit" class="btn btn-primary">Salvar</x-primary-button>
-                        </div>
                     </div>
                 </div>
             </div>

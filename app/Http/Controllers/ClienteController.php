@@ -9,13 +9,13 @@ use App\Models\Cliente;
 class ClienteController extends Controller
 {
     //
-    public function clients(Request $request)
+    public function clients(Request $request)   
     {
         $data = $request->validate([
             'nome'          => 'required|string|max:255',
-            'cpf'           => 'nullable|string|max:255',
-            'telefone'      => 'required|string|max:255',
-            'aniversario'   => 'required|string|max:255',
+            'cpf'           => 'required|string|max:255',
+            'telefone'      => 'nullable|string|max:255',
+            'aniversario'   => 'nullable|string|max:255',
             'observacao'    => 'nullable|string|max:255',
         ]);
 
