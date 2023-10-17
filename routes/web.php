@@ -72,9 +72,9 @@ Route::get('/contasReceber', function () {
     return view('contasReceber');
 })->middleware(['auth', 'verified'])->name('contasReceber');
 
-Route::get('/relatorios', function () {
-    return view('relatorios');
-})->middleware(['auth', 'verified'])->name('relatorios');
+Route::get('/entradas', function () {
+    return view('entradas');
+})->middleware(['auth', 'verified'])->name('entradas');
 
 
 Route::middleware('auth')->group(function () {

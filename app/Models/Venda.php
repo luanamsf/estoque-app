@@ -16,3 +16,4 @@ class Venda extends Model
         'modoPagamento',
     ];
 }
+ 

@@ -32,7 +32,7 @@
             <a href="/">
                 <x-fileicon-saltstack class="w-20 h-20 fill-current" color="darkred"/>
             </a>
-            <p align="center" class="mt-6 text-x1 leading-tight logo-font">LAUR</p>
+            <h2 align="center" class="mt-6 text-x1 leading-tight logo-font">LAUR</h2>
         </div>
         <p align="center" class="text-gray-400">Controle de estoque e vendas</p>
 

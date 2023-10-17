@@ -22,6 +22,9 @@
                     <x-nav-link :href="route('cadastro')" :active="request()->routeIs('cadastro')">
                         {{ __('Cadastro') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('entradas')" :active="request()->routeIs('entradas')">
+                        {{ __('Entradas') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('vendas')" :active="request()->routeIs('vendas')">
                         {{ __('Vendas') }}
                     </x-nav-link>
@@ -33,9 +36,6 @@
                     </x-nav-link>
                     <x-nav-link :href="route('contasReceber')" :active="request()->routeIs('contasReceber')">
                         {{ __('Contas a Receber') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('relatorios')" :active="request()->routeIs('relatorios')">
-                        {{ __('Relatórios') }}
                     </x-nav-link>
                 </div>
             </div>
