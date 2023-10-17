@@ -12,7 +12,7 @@ class VendaItem extends Model
         'produto_id',
         'valorVenda',
         'quantidade',
-        'valotTotalItem',
+        'valorTotalItem',
     ];
 }
 

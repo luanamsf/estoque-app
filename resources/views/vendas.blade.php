@@ -16,34 +16,54 @@
             var cell5 = newRow.insertCell(4);
 
             cell1.innerHTML = `
-            <select name="produtosId" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required onchange="atualizarValorVenda(this)" onchange="calcularValorTotalItem(this, this.parentNode.nextElementSibling.firstChild, this.parentNode.nextElementSibling.nextElementSibling.firstChild)">
-                <option value="">Selecione um produto</option>
-                @foreach($produtosId as $produto)
-                <option value="{{ $produto->id }}" data-valor="{{ $produto->valorVenda }}">{{ $produto->produto }}</option>
-                @endforeach
-            </select>
-        `;
+                <select name="produtosId" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required onchange="atualizarValorVenda(this)">
+                    <option value="">Selecione um produto</option>
+                    @foreach($produtosId as $produto)
+                    <option value="{{ $produto->id }}" data-valor="{{ $produto->valorVenda }}">{{ $produto->produto }}</option>
+                    @endforeach
+                </select>
+            `;
 
-            cell2.innerHTML = `<input type="text" name="valorVenda" id="valorVenda" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" readonly>`;
-            cell3.innerHTML = `<input type="number" name="quantidade" width="90%" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>`;
-            cell4.innerHTML = `<input type="text" name="valorTotalItem" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" readonly>`;
+            cell2.innerHTML = `<input type="text"   name="valorVenda"      class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" readonly>`;
+            cell3.innerHTML = `<input type="number" name="quantidade" id="quantidade${table.rows.length - 1}" class="border-gray-300 focus-border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required onchange="calcularValorTotalItem(this)" >`;
+            cell4.innerHTML = `<input type="text"   name="valorTotalItem"  class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" readonly>`;
             cell5.innerHTML = `<button type="button" border=0 onclick="removerProduto(this)"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16" color="darkred">@svg('fluentui-subtract-16')</svg></button>`;
         }
 
         function atualizarValorVenda(select) {
             var selectedOption = select.options[select.selectedIndex];
             var valorVenda = selectedOption.getAttribute('data-valor');
-
-            document.getElementById('valorVenda').value = valorVenda;
+            var row = select.parentNode.parentNode;
+            var valorVendaInput = row.querySelector('input[name="valorVenda"]');
+            valorVendaInput.value = valorVenda;
         }
 
-        function calcularValorTotalItem(selectElement, quantidadeElement, valorTotalItemElement) {
-            var selectedOption = selectElement.options[selectElement.selectedIndex];
-            var valorVenda = selectedOption.getAttribute('data-valor');
-            var quantidade = parseFloat(quantidadeElement.value);
+        function calcularValorTotalItem(inputQuantidade) {
+            var row = inputQuantidade.parentNode.parentNode;
+            var selectProduto = row.querySelector('select[name="produtosId"]');
+            var selectedOption = selectProduto.options[selectProduto.selectedIndex];
+            
 
-            var total = valorVenda * quantidade;
-            valorTotalItemElement.value = total.toFixed(2); // Formate para duas casas decimais
+
+
+
+            if (selectedOption) {
+                var valorVenda = parseFloat(selectedOption.getAttribute('data-valor'));
+                var quantidade = parseFloat(inputQuantidade.value);
+                var valorTotalItemInput = row.querySelector('input[name="valorTotalItem"]');
+                var valorTotalItem = quantidade * valorVenda;
+
+                const moeda = {
+                    style: 'currency',
+                    currency: 'BRL', 
+                };
+
+                const formatoMoeda = new Intl.NumberFormat('pt-BR', moeda);
+                
+                if (!isNaN(valorTotalItem)) {
+                    valorTotalItemInput.value = formatoMoeda.format(valorTotalItem);
+                }
+            }
         }
 
         function removerProduto(button) {

@@ -19,6 +19,10 @@ class VendaController extends Controller
             'dataVenda'          => 'string|max:255',
             'valorTotalVenda'    => 'required|string|max:255',
             'modoPagamento'      => 'required|string|max:255',
+            'produto_id'         => 'required|string|max:255',
+            'valorVenda'         => 'required|string|max:255',
+            'quantidade'         => 'string|max:255',
+            'valorTotalItem'     => 'required|string|max:255',
         ]);
 
         // Criar venda
