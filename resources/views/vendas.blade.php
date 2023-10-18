@@ -27,7 +27,7 @@
             cell2.innerHTML = `<input type="text"   name="valorVenda"      class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" readonly>`;
             cell3.innerHTML = `<input type="number" name="quantidade" id="quantidade${table.rows.length - 1}" class="border-gray-300 focus-border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required onchange="calcularValorTotalItem(this)">`;
             cell4.innerHTML = `<input type="text"   name="valorTotalItem"  class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" readonly>`;
-            cell4.innerHTML = `<input type="text"   name="valorTotalItem"  class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" readonly>`;
+            cell5.innerHTML = `<button type="button" border=0 onclick="removerProduto(this)"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16" color="darkred">@svg('fluentui-subtract-16')</svg></button>`;
         }
 
         function atualizarValorVenda(select) {
