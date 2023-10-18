@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('produto');
             $table->string('codigo');
             $table->string('tipo');
-            $table->string('marca');
+            $table->string('fornecedor_id');
             $table->string('unidade');
             $table->string('valorCusto');
             $table->string('valorVenda');

@@ -36,7 +36,7 @@ Route::get('/estoque', [ProdutoController::class, 'estoque'], function () {
 
 
 // Rota para a página de cadastro
-Route::get('/cadastro', function () {
+Route::get('/cadastro',  [ProdutoController::class, 'FornecedorList'],function () {
     return view('cadastro');
 })->middleware(['auth', 'verified'])->name('cadastro');
 

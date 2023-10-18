@@ -40,7 +40,14 @@
                             </tr>
                             <tr>
                                 <th><input type="text" name="tipo" id="tipo" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
-                                <th><input type="text" name="marca" id="marca" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th>
+                                <select name="fornecedor_id" id="fornecedor_id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
+                                        <option value="">Selecione uma marca</option>
+                                        @foreach($FornecedoresId as $fornecedor)
+                                        <option value="{{ $fornecedor->id }}">{{ $fornecedor->nomeFantasia }}</option>
+                                        @endforeach
+                                    </select>
+                                </th>
                                 <th><input type="text" name="unidade" id="unidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
                             </tr>
                             <tr>

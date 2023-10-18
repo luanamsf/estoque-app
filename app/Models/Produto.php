@@ -12,7 +12,7 @@ class Produto extends Model
         'produto',
         'codigo',
         'tipo',
-        'marca',
+        'fornecedor_id',
         'unidade',
         'valorCusto',
         'valorVenda',

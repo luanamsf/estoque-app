@@ -32,7 +32,7 @@ class VendaController extends Controller
     }
 
     // listar clientes
-    public function clientProductList(Request $request)
+    public function clientProductList()
     {
         $clientesId = Cliente::all();
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 
@@ -15,7 +16,7 @@ class ProdutoController extends Controller
             'produto'       => 'required|string|max:255',
             'codigo'        => 'required|string|max:255',
             'tipo'          => 'required|string|max:255',
-            'marca'         => 'required|string|max:255',
+            'fornecedor_id' => 'nullable|integer',
             'unidade'       => 'nullable|string|max:255',
             'valorCusto'    => 'required|string|max:255',
             'valorVenda'    => 'required|string|max:255',
@@ -27,6 +28,15 @@ class ProdutoController extends Controller
 
         return redirect()->route('cadastro')->with('success', 'Produto cadastrado com sucesso.');
     }
+
+
+        // listar fornecedores
+        public function FornecedorList()
+        {
+            $FornecedoresId = Fornecedor::all();
+    
+            return view('cadastro', ['FornecedoresId' => $FornecedoresId]);
+        }
 
 
     public function estoque()

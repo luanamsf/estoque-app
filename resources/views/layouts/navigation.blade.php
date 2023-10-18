@@ -17,7 +17,7 @@
                         {{ __('Painel') }}
                     </x-nav-link>
                     <x-nav-link :href="route('estoque')" :active="request()->routeIs('estoque')">
-                        {{ __('Estoque') }}
+                        {{ __('Produtos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('cadastro')" :active="request()->routeIs('cadastro')">
                         {{ __('Cadastro') }}
