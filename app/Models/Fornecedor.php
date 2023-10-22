@@ -12,6 +12,8 @@ class Fornecedor extends Model
         'cnpj',
         'telefone',
         'email',
-        'observacao'
+        'observacao',
+        'margem',
+        'prazoPagamento'
     ];
 }

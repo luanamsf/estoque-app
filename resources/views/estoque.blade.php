@@ -9,55 +9,54 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if ($produtos->count() > 0)
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Produto</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Código</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Marca</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vl. Custo</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vl. Venda</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Qtde</th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                    <!-- Adicione mais colunas para outros campos aqui -->
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach ($produtos as $produto)
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $produto->id }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $produto->produto }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $produto->codigo }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $produto->tipo }}</td>
-                                        @if ($produto->fornecedor)
-                                            <td class="px-6 py-4 whitespace-nowrap">{{ $produto->fornecedor->nomeFantasia }}</td>
-                                        @else
-                                            <td class="px-6 py-4 whitespace-nowrap">--</td>
-                                        @endif
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $produto->valorCusto }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $produto->valorVenda }}</td>
-                                        @if ( $produto->quantidade === "0")
-                                            <td class="px-6 py-4 whitespace-nowrap text-red-600">{{ $produto->quantidade }}</td>
-                                        @else
-                                            <td class="px-6 py-4 whitespace-nowrap">{{ $produto->quantidade }}</td>
-                                        @endif
-                                        @if ( $produto->status === "1")
-                                            <td class="px-6 py-4 whitespace-nowrap text-green-600">Disponível</td>
-                                        @else
-                                            <td class="px-6 py-4 whitespace-nowrap text-red-600">Indisponível</td>
-                                        @endif
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Produto</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Código</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Marca</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vl. Custo</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vl. Venda</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Qtde</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <!-- Adicione mais colunas para outros campos aqui -->
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach ($produtos as $produto)
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $produto->id }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $produto->produto }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $produto->codigo }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $produto->tipo }}</td>
+                                @if ($produto->fornecedor)
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $produto->fornecedor->nomeFantasia }}</td>
+                                @else
+                                <td class="px-6 py-4 whitespace-nowrap">--</td>
+                                @endif
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $produto->valorCusto }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $produto->valorVenda }}</td>
+                                @if ( $produto->quantidade === "0")
+                                <td class="px-6 py-4 whitespace-nowrap text-red-600">{{ $produto->quantidade }}</td>
+                                @else
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $produto->quantidade }}</td>
+                                @endif
+                                @if ( $produto->status === "1")
+                                <td class="px-6 py-4 whitespace-nowrap text-green-600">Disponível</td>
+                                @else
+                                <td class="px-6 py-4 whitespace-nowrap text-red-600">Indisponível</td>
+                                @endif
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                     @else
-                        <p>Nenhum produto cadastrado.</p>
+                    <p>Nenhum produto cadastrado.</p>
                     @endif
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
-

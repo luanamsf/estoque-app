@@ -57,7 +57,7 @@
     </div>
     @endif
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-12 lg:px-12">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h2 class="font-semibold text-xl mb-4">{{ __('Cadastro de Fornecedores') }}</h2>
@@ -70,7 +70,7 @@
                     <div id="collapsible-section" class="collapsible-content">
                         <form method="POST" action="{{ route('fornecedor.criaFornecedor') }}">
                             @csrf
-                            <table width="90%" align="center">
+                            <table width="100%" align="center">
                                 <tr>
                                     <th align="left">Nome Fantasia</th>
                                     <th colspan="2" align="left">Razão Social</th>
@@ -89,10 +89,14 @@
                                 <th><input type="text" name="email" id="email" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus" ></th>
                                 </tr>
                                 <tr>
-                                    <th colspan="6" align="left">Observação</th>
+                                    <th align="left">Observação</th>
+                                    <th align="left">Margem(%)</th>
+                                    <th align="left">Prazo(dias)</th>
                                 </tr>
                                 <tr>
-                                    <th colspan="6"><input type="text" name="observacao" id="observacao" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus"></th>
+                                    <th><input type="text" name="observacao" id="observacao" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus"></th>
+                                    <th><input type="text" name="margem" id="margem"  class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus"></th>
+                                    <th><input type="text" name="prazoPagamento" id="prazoPagamento" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" autofocus="autofocus"></th>
                                 </tr>
                             </table>
                             <br>
@@ -106,7 +110,7 @@
         </div>
     </div>
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-12 lg:px-12">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h2 class="font-semibold text-xl mb-4">Fornecedores</h2>
@@ -119,6 +123,8 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CNPJ</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefone</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">E-mail</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Margem</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prazo</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Observação</th>
                                 <!-- Adicione mais colunas para outros campos aqui -->
                             </tr>
@@ -131,6 +137,8 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->cnpj }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->telefone }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->email }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->margem }} {{ __('%') }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->prazoPagamento }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $fornecedor->observacao }}</td>
                             </tr>
                             @endforeach

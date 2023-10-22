@@ -10,12 +10,14 @@ class FornecedorController extends Controller
     public function criaFornecedor(Request $request)
     {
         $data = $request->validate([
-            'nomeFantasia'  => 'required|string|max:255',
-            'razaoSocial'   => 'required|string|max:255',
-            'cnpj'          => 'nullable|string|max:255',
-            'telefone'      => 'nullable|string|max:255',
-            'email'         => 'nullable|string|max:255',
-            'observacao'    => 'nullable|string|max:255',
+            'nomeFantasia'    => 'required|string|max:255',
+            'razaoSocial'     => 'required|string|max:255',
+            'cnpj'            => 'nullable|string|max:255',
+            'telefone'        => 'nullable|string|max:255',
+            'email'           => 'nullable|string|max:255',
+            'observacao'      => 'nullable|string|max:255',
+            'margem'          => 'nullable|integer|max:255',
+            'prazoPagamento'  => 'nullable|integer|max:255',
         ]);
 
         Fornecedor::create($data);

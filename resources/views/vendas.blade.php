@@ -93,7 +93,6 @@
                                         @endforeach
                                     </select>
                                 </th>
-                                <!-- <th width="10%"></th> -->
                                 <th width="40%">
                                     <select name="user_id" id="user_id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
                                         <option value="">Selecione um vendedor</option>

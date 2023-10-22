@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('telefone');
             $table->string('email');
             $table->string('observacao');
+            $table->integer('margem');
+            $table->integer('prazoPagamento');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });
