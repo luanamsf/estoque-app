@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Fornecedor;
 
 
 class Produto extends Model
@@ -19,4 +20,9 @@ class Produto extends Model
         'quantidade',
         'status',
     ];
+
+    public function fornecedor()
+    {
+        return $this->belongsTo(Fornecedor::class, 'fornecedor_id');
+    }
 }

@@ -77,6 +77,11 @@ Route::get('/entradas', function () {
 })->middleware(['auth', 'verified'])->name('entradas');
 
 
+Route::get('/relatorios', function () {
+    return view('relatorios');
+})->middleware(['auth', 'verified'])->name('relatorios');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
