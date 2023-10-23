@@ -26,17 +26,19 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/estoque', function () {
-//     return view('estoque');
-// })->middleware(['auth', 'verified'])->name('estoque');
-
 Route::get('/estoque', [ProdutoController::class, 'estoque'], function () {
     return view('estoque');
 })->middleware(['auth', 'verified'])->name('estoque');
 
+// Rota para abrir edição do produto
+Route::get('/cadastro/{produto}/editar', [ProdutoController::class, 'edit'])->name('produto.edit');
+
+// Rota para salvar alrerações do produto
+Route::put('/cadastro/{produto}', [ProdutoController::class, 'update'])->name('produto.update');
+
 
 // Rota para a página de cadastro
-Route::get('/cadastro',  [ProdutoController::class, 'FornecedorList'],function () {
+Route::get('/cadastro',  [ProdutoController::class, 'FornecedorList'], function () {
     return view('cadastro');
 })->middleware(['auth', 'verified'])->name('cadastro');
 
@@ -88,4 +90,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

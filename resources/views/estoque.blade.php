@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Produtos') }}
+            {{ __('Estoque') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -21,6 +21,7 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vl. Venda</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Qtde</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ação</th>
                                 <!-- Adicione mais colunas para outros campos aqui -->
                             </tr>
                         </thead>
@@ -48,6 +49,9 @@
                                 @else
                                 <td class="px-6 py-4 whitespace-nowrap text-red-600">Indisponível</td>
                                 @endif
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="{{ route('produto.edit', $produto->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -60,3 +64,38 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    $(document).ready(function() {
+
+        var margemPadrao = "";
+        $('#margem').val(margemPadrao);
+
+        $('#fornecedor_id').on('change', function() {
+            var margemLucro = parseFloat($(this).find('option:selected').data('margem'));
+            $('#margem').val(margemLucro);
+        });
+
+        $(document).ready(function() {
+            $('#valorCusto').on('input', function() {
+                var valorCusto = parseFloat($(this).val().replace(',', '.'));
+                var margemLucro = parseFloat($('#margem').val());
+
+                const moeda = {
+                    style: 'currency',
+                    currency: 'BRL',
+                };
+
+                const formatoMoeda = new Intl.NumberFormat('pt-BR', moeda);
+
+
+                if (!isNaN(valorCusto) && !isNaN(margemLucro)) {
+                    var margemLucro = ((100 - margemLucro) * 0.0100);
+                    var valorVenda = formatoMoeda.format((valorCusto / margemLucro)); 
+                    $('#valorVenda').val(valorVenda); 
+                } else {
+                    $('#valorVenda').val('');
+                }
+            });
+        });
+    });
+</script>

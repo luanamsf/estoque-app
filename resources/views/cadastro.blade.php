@@ -26,12 +26,15 @@
                         @csrf
                         <table width="90%" align="center">
                             <tr>
+                            <th colspan="4"><input type="hidden" name="id" id="id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->id) : old('id') }}" required></th>
+                            </tr>
+                            <tr>
                                 <th align="left" colspan="3">Produto</th>
                                 <th align="left">Código</th>
                             </tr>
                             <tr>
-                                <th colspan="3"><input type="text" name="produto" id="produto" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
-                                <th><input type="text" name="codigo" id="codigo" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th colspan="3"><input type="text" name="produto" id="produto" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->produto) : old('produto') }}" required></th>
+                                <th><input type="text" name="codigo" id="codigo" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->codigo) : old('codigo') }}" required></th>
                             </tr>
                             <tr>
                                 <th align="left">Tipo</th>
@@ -39,16 +42,18 @@
                                 <th align="left">Unidade</th>
                             </tr>
                             <tr>
-                                <th><input type="text" name="tipo" id="tipo" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th><input type="text" name="tipo" id="tipo" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->tipo) : old('tipo') }}" required></th>
                                 <th colspan="2">
                                     <select name="fornecedor_id" id="fornecedor_id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
                                         <option value="">Selecione uma marca</option>
                                         @foreach($FornecedoresId as $fornecedor)
-                                        <option value="{{ $fornecedor->id }}" data-margem="{{ $fornecedor->margem }}">{{ $fornecedor->nomeFantasia }}</option>
+                                        <option value="{{ $fornecedor->id }}" data-margem="{{ $fornecedor->margem }}" {{ isset($produto) && $produto->fornecedor_id == $fornecedor->id ? 'selected' : '' }}>
+                                            {{ $fornecedor->nomeFantasia }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </th>
-                                <th><input type="text" name="unidade" id="unidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th><input type="text" name="unidade" id="unidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->unidade) : old('unidade') }}" required></th>
                             </tr>
                             <tr>
                                 <th align="left">Preço de Custo</th>
@@ -57,17 +62,17 @@
                                 <th align="left">Quantidade</th>
                             </tr>
                             <tr>
-                                <th><input type="text" name="valorCusto" id="valorCusto" placeholder="0,00" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
-                                <th><input type="text" name="margem" id="margem" value="{{ $fornecedor->margem }}" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full default='' " readonly required></th>
-                                <th><input type="text" name="valorVenda" id="valorVenda" placeholder="0,00" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full readonly" readonly required></th>
-                                <th><input type="number" name="quantidade" id="quantidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required></th>
+                                <th><input type="text" name="valorCusto" id="valorCusto" placeholder="0,00" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->valorCusto) : old('valorCusto') }}" required></th>
+                                <th><input type="text" name="margem" id="margem" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ old('margem', isset($fornecedor) ? $fornecedor->margem : '') }}" readonly required></th>
+                                <th><input type="text" name="valorVenda" id="valorVenda" placeholder="0,00" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full readonly" value="{{ isset($produto) ? old('produto', $produto->valorVenda) : old('valorVenda') }}" readonly required></th>
+                                <th><input type="number" name="quantidade" id="quantidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->quantidade) : old('quantidade') }}" required></th>
                             </tr>
                             <tr>
                                 <th align="left">Disponível</th>
                             </tr>
                             <tr>
                                 <th>
-                                    <select name="status" id="status" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
+                                    <select name="status" id="status" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->status) : old('status') }}" required>
                                         <option value="1">Sim</option>
                                         <option value="0">Não</option>
                                     </select>
@@ -88,7 +93,7 @@
 <script>
     $(document).ready(function() {
 
-        var margemPadrao = "";
+        var margemPadrao = "{{ isset($produto) ? $produto->fornecedor->margem : 0 }}";
         $('#margem').val(margemPadrao);
 
         $('#fornecedor_id').on('change', function() {
@@ -111,10 +116,10 @@
 
                 if (!isNaN(valorCusto) && !isNaN(margemLucro)) {
                     var margemLucro = ((100 - margemLucro) * 0.0100);
-                    var valorVenda = formatoMoeda.format((valorCusto / margemLucro)); 
-                    $('#valorVenda').val(valorVenda); 
+                    var valorVenda = formatoMoeda.format((valorCusto / margemLucro));
+                    $('#valorVenda').val(valorVenda);
                 } else {
-                    $('#valorVenda').val('');
+                    $('#valorVenda').val(''); // Se o valor de custo for inválido, limpa o campo de valor de venda
                 }
             });
         });
