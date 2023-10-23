@@ -100,7 +100,7 @@
                                 </tr>
                             </table>
                             <br>
-                            <div class="mb-4">
+                            <div class="mb-4" align="center">
                             <x-primary-button type="submit" class="btn btn-primary">Salvar</x-primary-button>
                         </div>
                         </form>

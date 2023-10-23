@@ -80,7 +80,7 @@
                             </tr>
                         </table>
                         <br>
-                        <div class="mb-4">
+                        <div class="mb-4" align="center">
                             <x-primary-button type="submit" class="btn btn-primary">Salvar</x-primary-button>
                         </div>
                     </form>
@@ -106,17 +106,17 @@
                 var valorCusto = parseFloat($(this).val().replace(',', '.'));
                 var margemLucro = parseFloat($('#margem').val());
 
-                const moeda = {
-                    style: 'currency',
-                    currency: 'BRL',
-                };
+                // const moeda = {
+                //     style: 'currency',
+                //     currency: 'BRL',
+                // };
 
-                const formatoMoeda = new Intl.NumberFormat('pt-BR', moeda);
+                //const formatoMoeda = new Intl.NumberFormat('pt-BR', moeda);
 
 
                 if (!isNaN(valorCusto) && !isNaN(margemLucro)) {
                     var margemLucro = ((100 - margemLucro) * 0.0100);
-                    var valorVenda = formatoMoeda.format((valorCusto / margemLucro));
+                    var valorVenda = ((valorCusto / margemLucro).toFixed(2));
                     $('#valorVenda').val(valorVenda);
                 } else {
                     $('#valorVenda').val(''); // Se o valor de custo for inválido, limpa o campo de valor de venda
