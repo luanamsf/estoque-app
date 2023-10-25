@@ -23,6 +23,8 @@ return new class extends Migration
         });
     }
 
+    //TODO: INSERIR AS FOREIGN KEY
+
     /**
      * Reverse the migrations.
      */

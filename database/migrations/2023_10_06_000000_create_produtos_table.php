@@ -26,7 +26,10 @@ return new class extends Migration
             $table->timestamp('updated_at')->nullable();
         });
     }
+    
+    //TODO: INSERIR AS FOREIGN KEY
 
+    
     /**
      * Reverse the migrations.
      */

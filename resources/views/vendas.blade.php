@@ -4,12 +4,25 @@
             {{ __('Vendas') }}
         </h2>
     </x-slot>
-
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
     <script>
         function adicionarProduto() {
             var table = document.getElementById("produtosTable");
             var newRow = table.insertRow(table.rows.length);
-            
+
             // Define as células da nova linha
             var cell1 = newRow.insertCell(0);
             var cell2 = newRow.insertCell(1);
