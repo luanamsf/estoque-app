@@ -62,9 +62,9 @@
                                 <th align="left">Quantidade</th>
                             </tr>
                             <tr>
-                                <th><input type="text" name="valorCusto" id="valorCusto" placeholder="0,00" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->valorCusto) : old('valorCusto') }}" required></th>
+                                <th><input type="text" name="valorCusto" id="valorCusto" placeholder="0.00" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->valorCusto) : old('valorCusto') }}" required></th>
                                 <th><input type="text" name="margem" id="margem" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ old('margem', isset($fornecedor) ? $fornecedor->margem : '') }}" readonly required></th>
-                                <th><input type="text" name="valorVenda" id="valorVenda" placeholder="0,00" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full readonly" value="{{ isset($produto) ? old('produto', $produto->valorVenda) : old('valorVenda') }}" readonly required></th>
+                                <th><input type="text" name="valorVenda" id="valorVenda" placeholder="0.00" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full readonly" value="{{ isset($produto) ? old('produto', $produto->valorVenda) : old('valorVenda') }}" readonly required></th>
                                 <th><input type="number" name="quantidade" id="quantidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->quantidade) : old('quantidade') }}" required></th>
                             </tr>
                             <tr>
@@ -116,7 +116,7 @@
 
                 if (!isNaN(valorCusto) && !isNaN(margemLucro)) {
                     var margemLucro = ((100 - margemLucro) * 0.0100);
-                    var valorVenda = ((valorCusto / margemLucro).toFixed(2));
+                    var valorVenda = ((valorCusto / margemLucro).toFixed(2).replace(',', '.'));
                     $('#valorVenda').val(valorVenda);
                 } else {
                     $('#valorVenda').val(''); // Se o valor de custo for inválido, limpa o campo de valor de venda
