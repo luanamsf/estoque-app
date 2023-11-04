@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -70,18 +71,22 @@ Route::get('/fornecedores', [FornecedorController::class, 'listaFornecedor'], fu
 // Rota para salvar o fornecedor
 Route::post('/fornecedores', [FornecedorController::class, 'criaFornecedor'])->name('fornecedor.criaFornecedor');
 
-Route::get('/contasReceber', function () {
-    return view('contasReceber');
-})->middleware(['auth', 'verified'])->name('contasReceber');
+// Route::get('/contasReceber', function () {
+//     return view('contasReceber');
+// })->middleware(['auth', 'verified'])->name('contasReceber');
 
-Route::get('/entradas', function () {
+Route::get('/entradas', [EntradaController::class, 'FornecedorProductList'], function () {
     return view('entradas');
 })->middleware(['auth', 'verified'])->name('entradas');
 
 
-Route::get('/relatorios', function () {
-    return view('relatorios');
-})->middleware(['auth', 'verified'])->name('relatorios');
+// Rota para salvar a entrada
+Route::post('/entradas', [EntradaController::class, 'entry'])->name('entrada.entry');
+
+
+// Route::get('/relatorios', function () {
+//     return view('relatorios');
+// })->middleware(['auth', 'verified'])->name('relatorios');
 
 
 Route::middleware('auth')->group(function () {

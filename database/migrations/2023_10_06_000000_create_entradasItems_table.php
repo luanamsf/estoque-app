@@ -11,23 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vendas', function (Blueprint $table) {
+        Schema::create('entrada_items', function (Blueprint $table) {
             $table->id();
-            $table->integer('cliente_id');
-            $table->integer('user_id');
-            $table->string('dataVenda');
-            $table->string('valorTotalVenda');
-            $table->string('modoPagamento');
+            $table->integer('entrada_id');
+            $table->integer('produto_id');
+            $table->string('valorEntrada');
+            $table->integer('quantidade');
+            $table->string('valorTotalItem');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });
     }
+
+    //TODO: INSERIR AS FOREIGN KEY
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('vendas');
+        Schema::dropIfExists('entrada_items');
     }
 };
