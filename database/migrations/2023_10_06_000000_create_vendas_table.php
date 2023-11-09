@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('modoPagamento');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
+
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

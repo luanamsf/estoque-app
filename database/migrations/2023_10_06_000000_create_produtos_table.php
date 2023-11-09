@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('produto');
             $table->string('codigo');
             $table->string('tipo');
-            $table->string('fornecedor_id');
+            $table->unsignedBigInteger('fornecedor_id');
             $table->string('unidade');
             $table->string('valorCusto');
             $table->string('valorVenda');
@@ -24,12 +24,10 @@ return new class extends Migration
             $table->string('status');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
-        });
-    }
-    
-    //TODO: INSERIR AS FOREIGN KEY
 
-    
+            $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
+        });
+    }   
     /**
      * Reverse the migrations.
      */

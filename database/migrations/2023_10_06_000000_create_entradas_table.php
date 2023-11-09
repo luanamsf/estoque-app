@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('entradas', function (Blueprint $table) {
             $table->id();
-            $table->integer('fornecedor_id');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('fornecedor_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('notaFiscal');
             $table->string('serieNF');
             $table->string('valorTotalEntrada');
             $table->string('dataEntrada');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
+
+            $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

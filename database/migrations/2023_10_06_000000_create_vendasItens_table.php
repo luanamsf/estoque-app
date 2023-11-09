@@ -13,18 +13,18 @@ return new class extends Migration
     {
         Schema::create('venda_items', function (Blueprint $table) {
             $table->id();
-            $table->integer('venda_id');
-            $table->integer('produto_id');
+            $table->unsignedBigInteger('venda_id');
+            $table->unsignedBigInteger('produto_id');
             $table->string('valorVenda');
             $table->integer('quantidade');
             $table->string('valorTotalItem');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
+
+            $table->foreign('venda_id')->references('id')->on('vendas');
+            $table->foreign('produto_id')->references('id')->on('produtos');
         });
     }
-
-    //TODO: INSERIR AS FOREIGN KEY
-
     /**
      * Reverse the migrations.
      */
