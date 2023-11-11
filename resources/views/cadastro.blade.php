@@ -67,17 +67,6 @@
                                 <th><input type="text" name="valorVenda" id="valorVenda" placeholder="0.00" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full readonly" value="{{ isset($produto) ? old('produto', $produto->valorVenda) : old('valorVenda') }}" readonly required></th>
                                 <th><input type="number" name="quantidade" id="quantidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->quantidade) : old('quantidade') }}" required></th>
                             </tr>
-                            <tr>
-                                <th align="left">Disponível</th>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <select name="status" id="status" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->status) : old('status') }}" required>
-                                        <option value="1">Sim</option>
-                                        <option value="0">Não</option>
-                                    </select>
-                                </th>
-                            </tr>
                         </table>
                         <br>
                         <div class="mb-4" align="center">

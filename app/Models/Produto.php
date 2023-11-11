@@ -18,7 +18,6 @@ class Produto extends Model
         'valorCusto',
         'valorVenda',
         'quantidade',
-        'status',
     ];
 
     public function fornecedor()

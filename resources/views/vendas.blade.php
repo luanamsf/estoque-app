@@ -4,13 +4,9 @@
             {{ __('Vendas') }}
         </h2>
     </x-slot>
-    @if ($errors->any())
+    @if (session('error'))
     <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+        {{ session('error') }}
     </div>
     @endif
     @if (session('success'))
@@ -33,11 +29,27 @@
             // Adicione o conteúdo das células
             calcularValorTotalVenda();
 
+            var produtoSelect = document.createElement("select");
+            produtoSelect.name = "produto_id[]";
+            produtoSelect.className = "border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full";
+            produtoSelect.required = true;
+            produtoSelect.onchange = function() {
+                atualizarValorVenda(this);
+            };
+
+            cell1.appendChild(produtoSelect);
+
             cell1.innerHTML = `
                 <select name="produto_id[]" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required onchange="atualizarValorVenda(this)">
                     <option value="">Selecione um produto</option>
                     @foreach($produtosId as $produto)
-                    <option value="{{ $produto->id }}" data-valor="{{ $produto->valorVenda }}">{{ $produto->produto }}</option>
+                        <option value="{{ $produto->id }}" 
+                            @if($produto->quantidade == 0) 
+                                disabled 
+                            @endif
+                            data-valor="{{ $produto->valorVenda }}">
+                            {{ $produto->produto }} ({{ $produto->quantidade }})
+                        </option>
                     @endforeach
                 </select>
             `;
@@ -66,6 +78,16 @@
             var selectedOption = selectProduto.options[selectProduto.selectedIndex];
 
             if (selectedOption) {
+
+                var quantidadeDisponivel = parseFloat(selectedOption.text.match(/\((\d+)\)/)[1]);
+                var quantidadeInserida = parseFloat(inputQuantidade.value);
+
+                if (!isNaN(quantidadeInserida) && quantidadeInserida > quantidadeDisponivel) {
+                    alert("A quantidade inserida é maior do que a quantidade disponível em estoque. Por favor, insira uma quantidade válida.");
+                    inputQuantidade.value = "";
+                    return;
+                }
+
                 var valorVenda = parseFloat(selectedOption.getAttribute('data-valor'));
                 var quantidade = parseFloat(inputQuantidade.value);
                 var valorTotalItemInput = row.querySelector('input[name="valorTotalItem[]"]');

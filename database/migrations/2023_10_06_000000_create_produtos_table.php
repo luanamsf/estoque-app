@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('valorCusto');
             $table->string('valorVenda');
             $table->string('quantidade');
-            $table->string('status');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
 

@@ -44,10 +44,10 @@
                                 @else
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $produto->quantidade }}</td>
                                 @endif
-                                @if ( $produto->status === "1")
-                                <td class="px-6 py-4 whitespace-nowrap text-green-600">Disponível</td>
-                                @else
+                                @if ( $produto->quantidade === "0")
                                 <td class="px-6 py-4 whitespace-nowrap text-red-600">Indisponível</td>
+                                @else
+                                <td class="px-6 py-4 whitespace-nowrap text-green-600">Disponível</td>
                                 @endif
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <a href="{{ route('produto.edit', $produto->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>

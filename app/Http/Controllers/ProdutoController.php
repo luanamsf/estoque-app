@@ -21,7 +21,6 @@ class ProdutoController extends Controller
         'valorCusto'    => 'required|string|max:255',
         'valorVenda'    => 'required|string|max:255',
         'quantidade'    => 'nullable|integer',
-        'status'        => 'nullable|string|max:255',
     ]);
 
     // Verifica se já existe um produto com o mesmo ID
