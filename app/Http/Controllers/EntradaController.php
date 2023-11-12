@@ -35,13 +35,33 @@ class EntradaController extends Controller
         ]);
 
         for ($i = 0; $i < count($data['produto_id']); $i++) {
+
+            $produto = Produto::find($data['produto_id'][$i]);
+            $fornecedor = Fornecedor::find($data['fornecedor_id']);
+
             EntradaItem::create([
                 'entrada_id'       => $entrada->id,
                 'produto_id'       => $data['produto_id'][$i],
                 'valorEntrada'     => $data['valorEntrada'][$i],
                 'quantidade'       => $data['quantidade'][$i],
-                'valorTotalItem'   => $data['valorTotalItem'][$i],
+                'valorTotalItem'   => $data['valorTotalItem'][$i], 
             ]);
+
+
+            // CALCULO DO NOVO VALOR DE CUSTO 
+            $novoValorCusto = sprintf("%.2f", round( (($data['valorTotalItem'][$i]) + ($produto->quantidade * $produto->valorCusto)) / ($data['quantidade'][$i] + $produto->quantidade),2));
+            
+            $produto->valorCusto = $novoValorCusto; 
+            
+            // CALCULO DO NOVO VALOR DE VENDA
+            $margemLucro = ((100 - $fornecedor->margem) * 0.0100);
+            $novoValorVenda = sprintf("%.2f", round( ($novoValorCusto / $margemLucro),2));
+
+            $produto->valorVenda = $novoValorVenda;
+
+            // ATUALIZA A QUANTIDADE EM ESTOQUE E SALVA NA TABELA PRODUTOS
+            $produto->quantidade += $data['quantidade'][$i];
+            $produto->save();
         }
 
         return redirect()->route('entradas')->with('success', 'Entrada registrada com sucesso.');

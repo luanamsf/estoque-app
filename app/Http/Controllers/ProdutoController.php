@@ -72,7 +72,6 @@ class ProdutoController extends Controller
             'valorCusto'    => 'required',
             'valorVenda'    => 'required',
             'quantidade'    => 'required',
-            'status'        => 'required',
         ]);
 
         // Atualizar o produto com base nos dados do formulário

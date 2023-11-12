@@ -139,7 +139,7 @@
                         <table width="95%" align="center" id="produtosTable">
                             <tr>
                                 <th>Produto</th>
-                                <th>Vl. Entrada</th>
+                                <th>Vl. Unitário</th>
                                 <th>Quantidade</th>
                                 <th>Vl. Calc</th>
                             </tr>

@@ -19,6 +19,6 @@ class EntradaItemController extends Controller
 
         EntradaItem::create($data);
 
-        return view('entradas');
+        return view('entradas'); 
     }
 }
