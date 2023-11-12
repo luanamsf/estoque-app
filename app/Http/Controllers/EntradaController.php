@@ -47,16 +47,13 @@ class EntradaController extends Controller
                 'valorTotalItem'   => $data['valorTotalItem'][$i], 
             ]);
 
-
             // CALCULO DO NOVO VALOR DE CUSTO 
-            $novoValorCusto = sprintf("%.2f", round( (($data['valorTotalItem'][$i]) + ($produto->quantidade * $produto->valorCusto)) / ($data['quantidade'][$i] + $produto->quantidade),2));
-            
+            $novoValorCusto = sprintf("%.2f", round( (($data['valorTotalItem'][$i]) + ($produto->quantidade * $produto->valorCusto)) / ($data['quantidade'][$i] + $produto->quantidade),2));         
             $produto->valorCusto = $novoValorCusto; 
             
             // CALCULO DO NOVO VALOR DE VENDA
             $margemLucro = ((100 - $fornecedor->margem) * 0.0100);
             $novoValorVenda = sprintf("%.2f", round( ($novoValorCusto / $margemLucro),2));
-
             $produto->valorVenda = $novoValorVenda;
 
             // ATUALIZA A QUANTIDADE EM ESTOQUE E SALVA NA TABELA PRODUTOS

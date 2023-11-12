@@ -19,14 +19,12 @@
             var table = document.getElementById("produtosTable");
             var newRow = table.insertRow(table.rows.length);
 
-            // Define as células da nova linha
             var cell1 = newRow.insertCell(0);
             var cell2 = newRow.insertCell(1);
             var cell3 = newRow.insertCell(2);
             var cell4 = newRow.insertCell(3);
             var cell5 = newRow.insertCell(4);
 
-            // Adicione o conteúdo das células
             calcularValorTotalVenda();
 
             var produtoSelect = document.createElement("select");
@@ -66,8 +64,6 @@
             var selectedOption = select.options[select.selectedIndex];
             var valorVenda = selectedOption.getAttribute('data-valor');
             var row = select.parentNode.parentNode;
-
-            // Corrija o seletor para encontrar o campo 'valorVenda'
             var valorVendaInput = row.querySelector('input[name="valorVenda[]"]');
             valorVendaInput.value = valorVenda;
         }
@@ -119,7 +115,6 @@
                 }
             }
 
-            // Atualize o campo 'valorTotalVenda' com o valor total da venda
             var valorTotalVendaInput = document.getElementById('valorTotalVenda');
             valorTotalVendaInput.value = totalVenda.toFixed(2).replace(',', '.');
         }
@@ -134,7 +129,6 @@
                         <table width="95%" align="center">
                             <tr>
                                 <th align="left" colspan="2">Cliente</th>
-                                <!-- <th width="10%"></th> -->
                                 <th align="left">Vendedor</th>
                             </tr>
                             <tr>

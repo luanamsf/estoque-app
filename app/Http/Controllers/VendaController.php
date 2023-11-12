@@ -12,20 +12,18 @@ class VendaController extends Controller
 {
     public function sale(Request $request)
 {
-    // Valide os dados do formulário
     $data = $request->validate([
         'cliente_id'       => 'required|integer',
         'user_id'          => 'required|integer',
         'dataVenda'        => 'string|max:255',
         'valorTotalVenda'  => 'required|string|max:255',
         'modoPagamento'    => 'required|string|max:255',
-        'produto_id.*'     => 'required|integer', // Agora, permitimos vários produtos
+        'produto_id.*'     => 'required|integer',
         'valorVenda.*'     => 'required|string',
         'quantidade.*'     => 'required|integer',
         'valorTotalItem.*' => 'required|string',
     ]);
 
-    // Crie uma nova venda
     $venda = Venda::create([
         'cliente_id'      => $data['cliente_id'],
         'user_id'         => $data['user_id'],
@@ -34,7 +32,6 @@ class VendaController extends Controller
         'modoPagamento'   => $data['modoPagamento'],
     ]);
 
-    // Agora, percorra os produtos vendidos e salve-os na tabela "vendasItens"
     for ($i = 0; $i < count($data['produto_id']); $i++) {  
         
         $produto = Produto::find($data['produto_id'][$i]);

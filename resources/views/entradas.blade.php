@@ -30,7 +30,6 @@
             var cell4 = newRow.insertCell(3);
             var cell5 = newRow.insertCell(4);
 
-            // Adicione o conteúdo das células
             calcularValorTotalEntrada();
 
             cell1.innerHTML = `
@@ -64,7 +63,6 @@
                     valorTotalItemInput.value = valorTotalItem.toFixed(2);
                 }
             }
-
             calcularValorTotalEntrada();
         }
 
@@ -86,7 +84,6 @@
                 }
             }
 
-            // Atualize o campo 'valorTotalEntrada' com o valor total da Entrada
             var valorTotalEntradaInput = document.getElementById('valorTotalEntrada');
             valorTotalEntradaInput.value = totalEntrada.toFixed(2).replace(',', '.');
         }
@@ -101,7 +98,6 @@
                         <table width="95%" align="center">
                             <tr>
                                 <th align="left" colspan="3">Fornecedor</th>
-                                <!-- <th width="10%"></th> -->
                                 <th align="left">Usuário</th>
                             </tr>
                             <tr>
