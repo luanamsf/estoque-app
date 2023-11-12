@@ -42,7 +42,17 @@
                                 <th align="left">Unidade</th>
                             </tr>
                             <tr>
-                                <th><input type="text" name="tipo" id="tipo" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->tipo) : old('tipo') }}" required></th>
+                                <th>
+                                    <select name="tipo" id="tipo" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->tipo) : old('tipo') }}" required>
+                                        <option value="">Selecione um tipo</option>
+                                        <option value="Maquiagem">Maquiagem</option>
+                                        <option value="Perfumaria">Perfumaria</option>
+                                        <option value="Saude da Pele">Saúde da Pele</option>
+                                        <option value="Suplementos">Suplementos</option>
+                                        <option value="Utl Domestica">Utl. Doméstica</option>
+                                        <option value="Vestuario">Vestuário</option>
+                                        
+                                </th>
                                 <th colspan="2">
                                     <select name="fornecedor_id" id="fornecedor_id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
                                         <option value="">Selecione uma marca</option>
@@ -53,11 +63,23 @@
                                         @endforeach
                                     </select>
                                 </th>
-                                <th><input type="text" name="unidade" id="unidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->unidade) : old('unidade') }}" required></th>
+                                <th>
+                                    <select name="unidade" id="unidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->unidade) : old('unidade') }}" required>
+                                        <option value="">Selecione uma unidade</option>
+                                        <option value="Unidade">Unidade</option>
+                                        <option value="Caixa">Caixa</option>
+                                        <option value="Pacote">Pacote</option>
+                                        <option value="Quilograma">Quilo (Kg)</option>
+                                        <option value="Litro">Litro</option>
+                                        <option value="Mililitro">Mililitro</option>
+                                        <option value="Fardo">Fardo</option>
+                                        <option value="Peca">Peça</option>
+                                        <option value="Par">Par</option>
+                                </th>
                             </tr>
                             <tr>
                                 <th align="left">Preço de Custo</th>
-                                <th align="left">Margem(%)</th>
+                                <th align="left">Margem de Lucro (%)</th>
                                 <th align="left">Valor de Venda</th>
                                 <th align="left">Quantidade</th>
                             </tr>
