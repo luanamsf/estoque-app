@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
 
-            $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
+            $table->foreign('fornecedor_id')->references('id')->on('fornecedors');
         });
     }   
     /**
