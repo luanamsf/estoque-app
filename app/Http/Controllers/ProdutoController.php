@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use App\Models\TipoProduto;
+use App\Models\UnidadeProduto;
 
 class ProdutoController extends Controller
 {
@@ -62,6 +64,7 @@ class ProdutoController extends Controller
             'codigo'        => 'required',
             'tipo'          => 'required',
             'fornecedor_id' => 'required',
+            'unidade'       => 'required',
             'valorCusto'    => 'required',
             'valorVenda'    => 'required',
             'quantidade'    => 'required',

@@ -23,4 +23,14 @@ class Produto extends Model
     {
         return $this->belongsTo(Fornecedor::class, 'fornecedor_id');
     }
+
+    public function tipo()
+    {
+        return $this->belongsTo(TipoProduto::class, 'tipo_id');
+    }
+
+    public function unidade()
+    {
+        return $this->belongsTo(UnidadeProduto::class, 'unidade_id');
+    }
 }

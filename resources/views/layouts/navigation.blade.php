@@ -20,19 +20,22 @@
                         {{ __('Estoque') }}
                     </x-nav-link>
                     <x-nav-link :href="route('cadastro')" :active="request()->routeIs('cadastro')">
-                        {{ __('Cadastro') }}
+                        {{ __('Cadastrar') }}
                     </x-nav-link>
                     <x-nav-link :href="route('entradas')" :active="request()->routeIs('entradas')">
-                        {{ __('Entradas') }}
+                        {{ __('Entrada') }}
                     </x-nav-link>
                     <x-nav-link :href="route('vendas')" :active="request()->routeIs('vendas')">
-                        {{ __('Vendas') }}
+                        {{ __('Vender') }}
                     </x-nav-link>
                     <x-nav-link :href="route('clientes')" :active="request()->routeIs('clientes')">
                         {{ __('Clientes') }}
                     </x-nav-link>
                     <x-nav-link :href="route('fornecedores')" :active="request()->routeIs('fornecedores')">
                         {{ __('Fornecedores') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('relatorios')" :active="request()->routeIs('relatorios')">
+                        {{ __('Relatórios') }}
                     </x-nav-link>
                 </div>
             </div>

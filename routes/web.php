@@ -39,7 +39,7 @@ Route::put('/cadastro/{produto}', [ProdutoController::class, 'update'])->name('p
 
 
 // Rota para a página de cadastro
-Route::get('/cadastro',  [ProdutoController::class, 'FornecedorList'], function () {
+Route::get('/cadastro',  [ProdutoController::class, 'FornecedorList', ], function () {
     return view('cadastro');
 })->middleware(['auth', 'verified'])->name('cadastro');
 
@@ -84,11 +84,26 @@ Route::get('/entradas', [EntradaController::class, 'FornecedorProductList'], fun
 Route::post('/entradas', [EntradaController::class, 'entry'])->name('entrada.entry');
 
 
-// Route::get('/relatorios', function () {
-//     return view('relatorios');
-// })->middleware(['auth', 'verified'])->name('relatorios');
+// Rota para a página de Gerencia
+// Route::get('/gerencia', [GerenciaController::class, 'listaUnidade','listaTipo'], function () {
+//     return view('gerencia');
+// })->middleware(['auth', 'verified'])->name('gerencia');
 
 
+// Rota para salvar a unidade
+//Route::post('/gerencia', [GerenciaController::class, 'criaUnidade'])->name('gerencia.criaUnidade');
+
+//Rota para salvar a categoria
+//Route::post('/gerencia', [GerenciaController::class, 'criaTipo'])->name('gerencia.criaTipo');
+
+
+// Rota para a página de Relatórios
+Route::get('/relatorios', function () {
+    return view('relatorios');
+})->middleware(['auth', 'verified'])->name('relatorios');
+
+
+// Rotas de edição e autenticação de usuário
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
