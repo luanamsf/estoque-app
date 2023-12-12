@@ -26,7 +26,7 @@
                         @csrf
                         <table width="90%" align="center">
                             <tr>
-                            <th colspan="4"><input type="hidden" name="id" id="id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->id) : old('id') }}" required></th>
+                                <th colspan="4"><input type="hidden" name="id" id="id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->id) : old('id') }}" required></th>
                             </tr>
                             <tr>
                                 <th align="left" colspan="3">Produto</th>
@@ -43,15 +43,14 @@
                             </tr>
                             <tr>
                                 <th>
-                                    <select name="tipo" id="tipo" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->tipo) : old('tipo') }}" required>
+                                    <select name="tipo_id" id="tipo_id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
                                         <option value="">Selecione um tipo</option>
-                                        <option value="Maquiagem">Maquiagem</option>
-                                        <option value="Perfumaria">Perfumaria</option>
-                                        <option value="Saude da Pele">Saúde da Pele</option>
-                                        <option value="Suplementos">Suplementos</option>
-                                        <option value="Utl Domestica">Utl. Doméstica</option>
-                                        <option value="Vestuario">Vestuário</option>
-                                        
+                                        @foreach($TiposId as $tipo)
+                                        <option value="{{ $tipo->id }}" {{ isset($produto) && $produto->tipo_id == $tipo->id ? 'selected' : '' }}>
+                                            {{ $tipo->descricao_tipo }}
+                                        </option>
+                                        @endforeach
+                                    </select>
                                 </th>
                                 <th colspan="2">
                                     <select name="fornecedor_id" id="fornecedor_id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
@@ -64,17 +63,14 @@
                                     </select>
                                 </th>
                                 <th>
-                                    <select name="unidade" id="unidade" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" value="{{ isset($produto) ? old('produto', $produto->unidade) : old('unidade') }}" required>
+                                    <select name="unidade_id" id="unidade_id" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full" required>
                                         <option value="">Selecione uma unidade</option>
-                                        <option value="Unidade">Unidade</option>
-                                        <option value="Caixa">Caixa</option>
-                                        <option value="Pacote">Pacote</option>
-                                        <option value="Quilograma">Quilo (Kg)</option>
-                                        <option value="Litro">Litro</option>
-                                        <option value="Mililitro">Mililitro</option>
-                                        <option value="Fardo">Fardo</option>
-                                        <option value="Peca">Peça</option>
-                                        <option value="Par">Par</option>
+                                        @foreach($UnidadesId as $unidade)
+                                        <option value="{{ $unidade->id }}" {{ isset($produto) && $produto->unidade_id == $unidade->id ? 'selected' : '' }}>
+                                            {{ $unidade->descricao_unidade }}
+                                        </option>
+                                        @endforeach
+                                    </select>
                                 </th>
                             </tr>
                             <tr>

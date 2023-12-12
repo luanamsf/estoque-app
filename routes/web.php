@@ -39,7 +39,7 @@ Route::put('/cadastro/{produto}', [ProdutoController::class, 'update'])->name('p
 
 
 // Rota para a página de cadastro
-Route::get('/cadastro',  [ProdutoController::class, 'FornecedorList', ], function () {
+Route::get('/cadastro',  [ProdutoController::class, 'createProduto' ], function () {
     return view('cadastro');
 })->middleware(['auth', 'verified'])->name('cadastro');
 

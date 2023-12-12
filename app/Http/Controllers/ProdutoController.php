@@ -16,9 +16,9 @@ class ProdutoController extends Controller
         $data = $request->validate([
             'produto'       => 'required|string|max:255',
             'codigo'        => 'required|string|max:255',
-            'tipo'          => 'required|string|max:255',
-            'fornecedor_id' => 'nullable|integer',
-            'unidade'       => 'nullable|string|max:255',
+            'tipo_id'       => 'required|integer',
+            'fornecedor_id' => 'required|integer',
+            'unidade_id'    => 'required|integer',
             'valorCusto'    => 'required|string|max:255',
             'valorVenda'    => 'required|string|max:255',
             'quantidade'    => 'nullable|integer',
@@ -38,11 +38,17 @@ class ProdutoController extends Controller
         }
     }
 
-    // listar fornecedores
-    public function FornecedorList()
+    public function createProduto()
     {
         $FornecedoresId = Fornecedor::all();
-        return view('cadastro', ['FornecedoresId' => $FornecedoresId]);
+        $TiposId        = TipoProduto::all();
+        $UnidadesId     = UnidadeProduto::all();
+        
+        return view('cadastro', [
+            'FornecedoresId' => $FornecedoresId,
+            'TiposId'        => $TiposId,
+            'UnidadesId'     => $UnidadesId,
+        ]);
     }
 
     public function estoque()
@@ -54,20 +60,23 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         $FornecedoresId = Fornecedor::all();
-        return view('cadastro', compact('produto'), ['FornecedoresId' => $FornecedoresId]);
+        $TiposId        = TipoProduto::all();
+        $UnidadesId     = UnidadeProduto::all();
+        
+        return view('cadastro', compact('produto', 'FornecedoresId', 'TiposId', 'UnidadesId'));
     }
 
     public function update(Request $request, Produto $produto)
     {
         $request->validate([
-            'produto'       => 'required',
-            'codigo'        => 'required',
-            'tipo'          => 'required',
-            'fornecedor_id' => 'required',
-            'unidade'       => 'required',
-            'valorCusto'    => 'required',
-            'valorVenda'    => 'required',
-            'quantidade'    => 'required',
+            'produto'          => 'required',
+            'codigo'           => 'required',
+            'tipo_id'          => 'required',
+            'fornecedor_id'    => 'required',
+            'unidade_id'       => 'required',
+            'valorCusto'       => 'required',
+            'valorVenda'       => 'required',
+            'quantidade'       => 'required',
         ]);
 
         $produto->update($request->all());

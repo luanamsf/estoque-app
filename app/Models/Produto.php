@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Fornecedor;
+use App\Models\TipoProduto;
+use App\Models\UnidadeProduto;
 
 
 class Produto extends Model
@@ -11,9 +13,9 @@ class Produto extends Model
     protected $fillable = [
         'produto',
         'codigo',
-        'tipo',
+        'tipo_id',
         'fornecedor_id',
-        'unidade',
+        'unidade_id',
         'valorCusto',
         'valorVenda',
         'quantidade',

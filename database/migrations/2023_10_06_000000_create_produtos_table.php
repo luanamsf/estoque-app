@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('produto');
             $table->string('codigo');
-            $table->string('tipo');
-            $table->unsignedBigInteger('fornecedor_id');
-            $table->string('unidade');
+            $table->integer('tipo_id');
+            $table->integer('fornecedor_id');
+            $table->integer('unidade_id');
             $table->string('valorCusto');
             $table->string('valorVenda');
             $table->string('quantidade');
@@ -25,11 +25,11 @@ return new class extends Migration
             $table->timestamp('updated_at')->nullable();
 
             $table->foreign('fornecedor_id')->references('id')->on('fornecedors');
+            $table->foreign('tipo_id')->references('id')->on('tipo_produtos');
+            $table->foreign('unidade_id')->references('id')->on('unidade_produtos');
         });
     }   
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('produtos');

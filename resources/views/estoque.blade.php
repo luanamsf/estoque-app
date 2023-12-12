@@ -34,7 +34,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $produto->id }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $produto->produto }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $produto->codigo }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $produto->tipo }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $produto->tipo->descricao_tipo }}</td>
                                 @if ($produto->fornecedor)
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $produto->fornecedor->nomeFantasia }}</td>
                                 @else
