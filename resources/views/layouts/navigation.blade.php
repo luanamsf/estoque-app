@@ -20,13 +20,13 @@
                         {{ __('Estoque') }}
                     </x-nav-link>
                     <x-nav-link :href="route('cadastro')" :active="request()->routeIs('cadastro')">
-                        {{ __('Cadastrar') }}
+                        {{ __('Cadastro') }}
                     </x-nav-link>
                     <x-nav-link :href="route('entradas')" :active="request()->routeIs('entradas')">
                         {{ __('Entrada') }}
                     </x-nav-link>
                     <x-nav-link :href="route('vendas')" :active="request()->routeIs('vendas')">
-                        {{ __('Vender') }}
+                        {{ __('Venda') }}
                     </x-nav-link>
                     <x-nav-link :href="route('clientes')" :active="request()->routeIs('clientes')">
                         {{ __('Clientes') }}
