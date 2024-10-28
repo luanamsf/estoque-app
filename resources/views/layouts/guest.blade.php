@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Login -->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -17,11 +16,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
-        .logo-img {
-            height: auto;
-            width: auto;
-        }
-
         .login-container {
             display: flex;
             flex-direction: column;
@@ -36,9 +30,9 @@
     <div class="min-h-screen flex flex-col justify-center items-center bg-gray-100">
         <div class="login-container">
             <div class="w-full sm:max-w-md px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            <div>
-                <img src="/images/Logo_cinza_3.png" alt="Logo Laur" class="h-12 w-auto">
-            </div>
+                <div>
+                    <img src="/images/Logo_cinza_3.png" alt="Logo Laur" class="h-12 w-auto">
+                </div>
                 {{ $slot }}
                 @if(Route::currentRouteName() == 'login')
                 <div align="left" class="mt-4">
@@ -47,6 +41,12 @@
                     </a>
                 </div>
                 @endif
+            </div>
+            <!-- Texto centralizado abaixo do login -->
+            <div class="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
+                <a href="https://github.com/luanamsf" class="group inline-flex items-center hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                    Todos os By LuanaFigueiredo
+                </a>
             </div>
         </div>
     </div>
