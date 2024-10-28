@@ -13,7 +13,7 @@
 
         .custom-btn-ok:hover {
             background-color: #45a049 !important;
-            /* Verde mais escuro ao passar o mouse */
+            
         }
     </style>
 </head>

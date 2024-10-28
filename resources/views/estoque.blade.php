@@ -1,6 +1,3 @@
-<!-- TODO: ACRESCENTAR A ROTINA DE EXCLUSÃO DE PRODUTOS CASO NÃO EXISTA MOVIMENTAÇÃO EM ESTOQUE -->
-<!-- TODO: ACRESCENTAR CAMPO DE STATUS (ATIVO E INATIVO) QUANDO O PRODUTO DEIXA DE SER COMERCIALIZADO, MAS QUE TEM MOVIMENTAÇÃO ANTERIOR NO ESTOQUE. -->
-
 <head>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
@@ -16,7 +13,7 @@
 
         .custom-btn-ok:hover {
             background-color: #45a049 !important;
-            /* Verde mais escuro ao passar o mouse */
+            
         }
     </style>
 </head>

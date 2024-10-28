@@ -1,16 +1,7 @@
 <!DOCTYPE html>
 <!-- Login -->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<style>
-    .logo-color{
-        color: darkslateblue;
-    }
 
-    .logo-font{
-        font-weight: 900;
-        font-size:larger;
-    }
-</style>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,28 +15,39 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        .logo-img {
+            height: auto;
+            width: auto;
+        }
+
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            /* Espaçamento entre logo e formulário */
+        }
+    </style>
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-        <div>
-            <a href="/">
-                <x-fileicon-saltstack class="w-20 h-20 fill-current" color="darkred"/>
-            </a>
-            <h2 align="center" class="mt-6 text-x1 leading-tight logo-font">LAUR</h2>
-        </div>
-        <p align="center" class="text-gray-400">Controle de estoque e vendas</p>
-
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            {{ $slot }}
-            @if(Route::currentRouteName() == 'login')
-            <div align="left">
-                <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Cadastrar-se</a>
+    <div class="min-h-screen flex flex-col justify-center items-center bg-gray-100">
+        <div class="login-container">
+            <div class="w-full sm:max-w-md px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div>
+                <img src="/images/Logo_cinza_3.png" alt="Logo Laur" class="h-12 w-auto">
             </div>
-            @else
-               
-            @endif
-
+                {{ $slot }}
+                @if(Route::currentRouteName() == 'login')
+                <div align="left" class="mt-4">
+                    <a href="{{ route('register') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                        Cadastrar-se
+                    </a>
+                </div>
+                @endif
+            </div>
         </div>
     </div>
 </body>
