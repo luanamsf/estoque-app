@@ -45,7 +45,7 @@
             <!-- Texto centralizado abaixo do login -->
             <div class="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
                 <a href="https://github.com/luanamsf" class="group inline-flex items-center hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                    Todos os By LuanaFigueiredo
+                    By LuanaFigueiredo
                 </a>
             </div>
         </div>
