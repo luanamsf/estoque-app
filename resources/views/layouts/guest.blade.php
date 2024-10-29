@@ -8,20 +8,30 @@
 
     <title>Sistema Laur</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
+        .logo_img {
+            width: 65%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
         .login-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 12px;
-            /* Espaçamento entre logo e formulário */
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
         }
     </style>
 </head>
@@ -31,21 +41,21 @@
         <div class="login-container">
             <div class="w-full sm:max-w-md px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 <div>
-                    <img src="/images/Logo_cinza_3.png" alt="Logo Laur" class="h-12 w-auto">
+                    <img src="/images/Logo_cinza_3.png" alt="Logo Laur" class="h-12 w-auto logo_img">
                 </div>
                 {{ $slot }}
                 @if(Route::currentRouteName() == 'login')
-                <div align="left" class="mt-4">
-                    <a href="{{ route('register') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                 <div align="left" class="mt-4">
+                    <!-- <a href="{{ route('register') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
                         Cadastrar-se
-                    </a>
-                </div>
+                    </a> -->
+                </div> 
                 @endif
             </div>
             <!-- Texto centralizado abaixo do login -->
-            <div class="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
-                <a href="https://github.com/luanamsf" class="group inline-flex items-center hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                    By LuanaFigueiredo
+            <div class="footer text-center text-sm text-gray-500 dark:text-gray-400">
+                <a href="https://github.com/luanamsf" class="group inline-flex items-center hover:text-gray-700 dark:hover:text-black focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                    © 2024 Sistema Laur. By Luana Figueiredo
                 </a>
             </div>
         </div>

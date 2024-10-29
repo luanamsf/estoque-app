@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600">
-        {{ __('Esqueceu sua senha? Não tem problema. Basta nos informar seu endereço de e-mail e enviaremos um link de redefinição de senha que permitirá que você escolha uma nova.') }}
+        {{ __('Esqueceu sua senha? Informe seu endereço de e-mail e enviaremos um link de redefinição de senha.') }}
     </div>
 
     <!-- Session Status -->
@@ -11,14 +11,14 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('E-mail')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
             <x-primary-button>
-                {{ __('Link de redefinição') }}
+                {{ __('Enviar') }}
             </x-primary-button>
         </div>
     </form>
