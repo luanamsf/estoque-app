@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EntradaController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\ProfileController;
@@ -79,9 +80,13 @@ Route::get('/entradas', [EntradaController::class, 'FornecedorProductList'], fun
     return view('entradas');
 })->middleware(['auth', 'verified'])->name('entradas');
 
-
 // Rota para salvar a entrada
 Route::post('/entradas', [EntradaController::class, 'entry'])->name('entrada.entry');
+
+// Rota para editar informações da empresa
+Route::get('/company/edit', [CompanyController::class, 'edit'])->name('company.edit');
+Route::post('/company/save', [CompanyController::class, 'save'])->name('company.save');
+
 
 
 // Rota para a página de Gerencia

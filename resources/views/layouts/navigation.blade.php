@@ -49,7 +49,10 @@
                     </x-slot>
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Perfil') }}
+                            {{ __('Usuário') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('company.edit')">
+                            {{ __('Empresa') }}
                         </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

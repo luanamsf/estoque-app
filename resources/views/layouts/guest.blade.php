@@ -45,7 +45,7 @@
                 </div>
                 {{ $slot }}
                 @if(Route::currentRouteName() == 'login')
-                 <div align="left" class="mt-4">
+                <div align="left" class="mt-4">
                 </div> 
                 @endif
             </div>
