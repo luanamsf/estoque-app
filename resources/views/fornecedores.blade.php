@@ -15,7 +15,6 @@
 
         .custom-btn-ok {
             background-color: #4CAF50 !important;
-            /* Verde */
             color: white !important;
             border: none !important;
             border-radius: 5px;
@@ -129,7 +128,6 @@
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Margem</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prazo</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Observação</th>
-                                    <!-- Adicione mais colunas para outros campos aqui -->
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">

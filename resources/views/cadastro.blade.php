@@ -1,19 +1,15 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        /* Personalizando o botão OK */
         .custom-btn-ok {
             background-color: #4CAF50 !important;
-            /* Verde */
             color: white !important;
             border: none !important;
             border-radius: 5px;
             padding: 10px 20px;
         }
-
         .custom-btn-ok:hover {
             background-color: #45a049 !important;
-            
         }
     </style>
 </head>
@@ -143,20 +139,12 @@
                     var valorCusto = parseFloat($(this).val().replace(',', '.'));
                     var margemLucro = parseFloat($('#margem').val());
 
-                    // const moeda = {
-                    //     style: 'currency',
-                    //     currency: 'BRL',
-                    // };
-
-                    //const formatoMoeda = new Intl.NumberFormat('pt-BR', moeda);
-
-
                     if (!isNaN(valorCusto) && !isNaN(margemLucro)) {
                         var margemLucro = ((100 - margemLucro) * 0.0100);
                         var valorVenda = ((valorCusto / margemLucro).toFixed(2).replace(',', '.'));
                         $('#valorVenda').val(valorVenda);
                     } else {
-                        $('#valorVenda').val(''); // Se o valor de custo for inválido, limpa o campo de valor de venda
+                        $('#valorVenda').val('');
                     }
                 });
             });

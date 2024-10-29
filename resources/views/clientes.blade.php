@@ -15,7 +15,6 @@
 
         .custom-btn-ok {
             background-color: #4CAF50 !important;
-            /* Verde */
             color: white !important;
             border: none !important;
             border-radius: 5px;

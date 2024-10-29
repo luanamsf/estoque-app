@@ -46,13 +46,9 @@
                 {{ $slot }}
                 @if(Route::currentRouteName() == 'login')
                  <div align="left" class="mt-4">
-                    <!-- <a href="{{ route('register') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                        Cadastrar-se
-                    </a> -->
                 </div> 
                 @endif
             </div>
-            <!-- Texto centralizado abaixo do login -->
             <div class="footer text-center text-sm text-gray-500 dark:text-gray-400">
                 <a href="https://github.com/luanamsf" class="group inline-flex items-center hover:text-gray-700 dark:hover:text-black focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
                     © 2024 Sistema Laur. By Luana Figueiredo

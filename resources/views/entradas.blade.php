@@ -1,10 +1,8 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-        /* Personalizando o botão OK */
         .custom-btn-ok {
             background-color: #4CAF50 !important;
-            /* Verde */
             color: white !important;
             border: none !important;
             border-radius: 5px;
