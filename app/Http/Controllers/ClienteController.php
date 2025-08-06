@@ -28,4 +28,11 @@ class ClienteController extends Controller
 
         return view('clientes', compact('clientes'));
     }
+
+    public function relatorioClientes()
+    {
+        $clientes = Cliente::orderBy('nome')->get();
+
+        return view('relatorios.clientes', compact('clientes'));
+    }
 }

@@ -28,9 +28,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/estoque', [ProdutoController::class, 'estoque'], function () {
-    return view('estoque');
-})->middleware(['auth', 'verified'])->name('estoque');
+Route::get('/estoque', [ProdutoController::class, 'estoque'])
+    ->middleware(['auth', 'verified'])
+    ->name('estoque');
 
 // Rota para abrir edição do produto
 Route::get('/cadastro/{produto}/editar', [ProdutoController::class, 'edit'])->name('produto.edit');
@@ -40,34 +40,34 @@ Route::put('/cadastro/{produto}', [ProdutoController::class, 'update'])->name('p
 
 
 // Rota para a página de cadastro
-Route::get('/cadastro',  [ProdutoController::class, 'createProduto' ], function () {
-    return view('cadastro');
-})->middleware(['auth', 'verified'])->name('cadastro');
+Route::get('/cadastro', [ProdutoController::class, 'createProduto'])
+    ->middleware(['auth', 'verified'])
+    ->name('cadastro');
 
 // Rota para salvar o produto
 Route::post('/cadastro', [ProdutoController::class, 'store'])->name('produto.store');
 
 
-Route::get('/vendas', [VendaController::class, 'clientProductList'], function () {
-    return view('vendas');
-})->middleware(['auth', 'verified'])->name('vendas');
+Route::get('/vendas', [VendaController::class, 'clientProductList'])
+    ->middleware(['auth', 'verified'])
+    ->name('vendas');
 
 // Rota para salvar a venda
 Route::post('/vendas', [VendaController::class, 'sale'])->name('venda.sale');
 
 // Rota para a página de clientes
-Route::get('/clientes', [ClienteController::class, 'listaCliente'], function () {
-    return view('clientes');
-})->middleware(['auth', 'verified'])->name('clientes');
+Route::get('/clientes', [ClienteController::class, 'listaCliente'])
+    ->middleware(['auth', 'verified'])
+    ->name('clientes');
 
 // Rota para salvar o cliente
 Route::post('/clientes', [ClienteController::class, 'clients'])->name('cliente.clients');
 
 
 // Rota para a página de fornecedores
-Route::get('/fornecedores', [FornecedorController::class, 'listaFornecedor'], function () {
-    return view('fornecedores');
-})->middleware(['auth', 'verified'])->name('fornecedores');
+Route::get('/fornecedores', [FornecedorController::class, 'listaFornecedor'])
+    ->middleware(['auth', 'verified'])
+    ->name('fornecedores');
 
 // Rota para salvar o fornecedor
 Route::post('/fornecedores', [FornecedorController::class, 'criaFornecedor'])->name('fornecedor.criaFornecedor');
@@ -76,9 +76,9 @@ Route::post('/fornecedores', [FornecedorController::class, 'criaFornecedor'])->n
 //     return view('contasReceber');
 // })->middleware(['auth', 'verified'])->name('contasReceber');
 
-Route::get('/entradas', [EntradaController::class, 'FornecedorProductList'], function () {
-    return view('entradas');
-})->middleware(['auth', 'verified'])->name('entradas');
+Route::get('/entradas', [EntradaController::class, 'FornecedorProductList'])
+    ->middleware(['auth', 'verified'])
+    ->name('entradas');
 
 // Rota para salvar a entrada
 Route::post('/entradas', [EntradaController::class, 'entry'])->name('entrada.entry');
@@ -106,6 +106,10 @@ Route::post('/company/save', [CompanyController::class, 'save'])->name('company.
 Route::get('/relatorios', function () {
     return view('relatorios');
 })->middleware(['auth', 'verified'])->name('relatorios');
+
+Route::get('/relatorios/clientes', [ClienteController::class, 'relatorioClientes'])
+    ->middleware(['auth', 'verified'])
+    ->name('relatorios.clientes');
 
 
 // Rotas de edição e autenticação de usuário
