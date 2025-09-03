@@ -11,12 +11,13 @@ class ClientesExport implements FromCollection, WithHeadings
     public function collection()
     {
         return Cliente::orderBy('nome')
-            ->get(['nome', 'cpf', 'telefone', 'aniversario', 'observacao']);
+            ->get(['nome', 'cpf', 'telefone', 'email','endereco','aniversario', 'observacao']);
     }
 
     public function headings(): array
     {
-        return ['Nome', 'CPF', 'Telefone', 'Aniversário', 'Observação'];
+        return ['Nome', 'CPF', 'Telefone' , 'E-mail', 'Endereço' ,'Aniversário', 'Observação'];
     }
 }
+
 
