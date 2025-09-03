@@ -1,5 +1,7 @@
 <?php
 
+use Barryvdh\DomPDF\Facade\Pdf as PdfFacade;
+use Barryvdh\DomPDF\ServiceProvider as DomPDFServiceProvider;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -160,6 +162,8 @@ return [
          * Package Service Providers...
          */
 
+        DomPDFServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -183,6 +187,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Pdf' => PdfFacade::class,
     ])->toArray(),
 
 ];
