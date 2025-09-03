@@ -45,7 +45,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900" style="font-size:1pc;">
-                    <h3><a href="{{ route('relatorios.clientes') }}">Clientes</a></h3>
+                    <h3 class="flex items-center">
+                        <a href="{{ route('relatorios.clientes') }}" class="flex-1">Clientes</a>
+                        <a href="{{ route('relatorios.clientes.pdf') }}" class="ml-2" title="Exportar PDF">📄</a>
+                        <a href="{{ route('relatorios.clientes.excel') }}" class="ml-2" title="Exportar Excel">📊</a>
+                    </h3>
                 </div>
             </div>
         </div>

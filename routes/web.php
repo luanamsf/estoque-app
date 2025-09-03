@@ -111,6 +111,14 @@ Route::get('/relatorios/clientes', [ClienteController::class, 'relatorioClientes
     ->middleware(['auth', 'verified'])
     ->name('relatorios.clientes');
 
+Route::get('/relatorios/clientes/pdf', [ClienteController::class, 'exportClientesPdf'])
+    ->middleware(['auth', 'verified'])
+    ->name('relatorios.clientes.pdf');
+
+Route::get('/relatorios/clientes/excel', [ClienteController::class, 'exportClientesExcel'])
+    ->middleware(['auth', 'verified'])
+    ->name('relatorios.clientes.excel');
+
 
 // Rotas de edição e autenticação de usuário
 Route::middleware('auth')->group(function () {
