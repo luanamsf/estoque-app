@@ -16,6 +16,8 @@ class ClienteController extends Controller
             'nome'          => 'required|string|max:255',
             'cpf'           => 'required|string|max:255',
             'telefone'      => 'nullable|string|max:255',
+            'email'         => 'nullable|string|max:255',
+            'endereco'      => 'nullable|string|max:255',
             'aniversario'   => 'nullable|string|max:255',
             'observacao'    => 'nullable|string|max:255',
         ]);

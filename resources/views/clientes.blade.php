@@ -117,6 +117,8 @@
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CPF</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefone</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">E-mail</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Endereço</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aniversário</th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Observação</th>
                                     <!-- Adicione mais colunas para outros campos aqui -->
@@ -128,6 +130,8 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->nome }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->cpf }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->telefone }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->email }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->endereco }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->aniversario }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $cliente->observacao }}</td>
                                 </tr>
