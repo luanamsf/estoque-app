@@ -44,7 +44,7 @@ class ClienteController extends Controller
     public function exportClientesPdf()
     {
         $clientes = Cliente::orderBy('nome')->get();
-        $pdf = Pdf::loadView('relatorios.clientes', compact('clientes'));
+        $pdf = Pdf::loadView('relatorios.clientes_pdf', compact('clientes'));
         return $pdf->download('relatorio_clientes.pdf');
     }
 
