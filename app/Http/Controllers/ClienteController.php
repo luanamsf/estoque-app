@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ClientesExport;
 
 class ClienteController extends Controller
 {
@@ -34,5 +37,17 @@ class ClienteController extends Controller
         $clientes = Cliente::orderBy('nome')->get();
 
         return view('relatorios.clientes', compact('clientes'));
+    }
+
+    public function exportClientesPdf()
+    {
+        $clientes = Cliente::orderBy('nome')->get();
+        $pdf = Pdf::loadView('relatorios.clientes', compact('clientes'));
+        return $pdf->download('relatorio_clientes.pdf');
+    }
+
+    public function exportClientesExcel()
+    {
+        return Excel::download(new ClientesExport, 'relatorio_clientes.xlsx');
     }
 }
